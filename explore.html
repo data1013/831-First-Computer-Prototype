@@ -1,12 +1,131 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Wing It!</title>
         <meta charset="UTF-8">
         <meta name="description" content="Wing It!">
         <link rel='stylesheet' href='stylesheets/explore.css'/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="./js/index.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
+        <script src='js/explore.js'></script>
     </head>
     <body>
-       
+        <div class="ui menu">
+          <a class="item">Wing It!</a>
+          <div id="explore-heading" class="item">Explore</div>
+          <div class="right menu">
+              <div class="ui category search item">
+                <div class="ui transparent icon input">
+                  <input class="prompt" type="text" placeholder="Search events...">
+                  <i class="search link icon"></i>
+                </div>
+                <div class="results"></div>
+              </div>    
+          </div>
+        </div>
+        <div id="filterby-row">
+            Filter By        
+            <div class="ui dropdown button">
+              <span class="text">Cost</span>
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                <div class="item">
+                  <span class="text">$</span>
+                  <span class="description">&lt;$50</span>
+                </div>
+                <div class="item">
+                  <span class="text">$$</span>
+                  <span class="description">$50 - $100</span>
+                </div>
+                <div class="item">
+                  <span class="text">$$$</span>
+                  <span class="description">$100 - $200</span>
+                </div>
+                <div class="item">
+                  <span class="text">$$$$</span>
+                  <span class="description">&gt;$200</span>
+                </div>
+              </div>
+            </div>
+            <div class="ui dropdown button">
+              <span class="text">Preparation Time</span>
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                <div class="item">
+                  <span class="text">$</span>
+                  <span class="description">&lt;$50</span>
+                </div>
+                <div class="item">
+                  <span class="text">$$</span>
+                  <span class="description">$50 - $100</span>
+                </div>
+                <div class="item">
+                  <span class="text">$$$</span>
+                  <span class="description">$100 - $200</span>
+                </div>
+                <div class="item">
+                  <span class="text">$$$$</span>
+                  <span class="description">&gt;$200</span>
+                </div>
+              </div>
+            </div>
+            <div class="ui dropdown button">
+              <span class="text">Duration</span>
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                <div class="item">
+                  <span class="text">$</span>
+                  <span class="description">&lt;30min</span>
+                </div>
+                <div class="item">
+                  <span class="text">$$</span>
+                  <span class="description">30min - 1hr</span>
+                </div>
+                <div class="item">
+                  <span class="text">$$$</span>
+                  <span class="description">1hr - 2hr</span>
+                </div>
+                <div class="item">
+                  <span class="text">$$$$</span>
+                  <span class="description">&gt;2hr</span>
+                </div>
+              </div>
+            </div>
+            <div class="ui dropdown button">
+              <span class="text">Sort By PLACEHOLDER</span>
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                <div class="item">
+                  <span class="text">$</span>
+                  <span class="description">&lt;30min</span>
+                </div>
+                <div class="item">
+                  <span class="text">$$</span>
+                  <span class="description">30min - 1hr</span>
+                </div>
+                <div class="item">
+                  <span class="text">$$$</span>
+                  <span class="description">1hr - 2hr</span>
+                </div>
+                <div class="item">
+                  <span class="text">$$$$</span>
+                  <span class="description">&gt;2hr</span>
+                </div>
+              </div>
+            </div>        
+        </div>
+        
+<!-- HERE BEGINS ALL THE EVENTS SWEG           -->
+<div id="stock-image"></div>
+<div class="ui modal">
+  <div class="header">Header</div>
+  <div class="image content">
+    <img class="image">
+    <div class="description">
+      <p></p>
+    </div>
+  </div>
+</div>
 	</body>
 </html>
