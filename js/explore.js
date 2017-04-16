@@ -109,7 +109,10 @@ $(document).ready(function() {
 	$("#stock-image").on("click", function() {
 		$('.ui.modal').modal('show');  
 	});
-
+     
+	$(".user-input").on("click", function() {
+		console.log($(this).attr("data-value"));  
+	});
 	var currentFilters = {};
 	var currentSortProperty;
 	var currentSortReverse;
