@@ -43,13 +43,13 @@
         controller: 'MainController',
         controllerAs: 'main'
       })
-      .when('/contact', {
-        templateUrl: 'views/contact.html',
+      .when('/browse', {
+        templateUrl: 'views/browse.html',
         controller: 'MainController',
         controllerAs: 'main'
       })
-      .when('/setup', {
-        templateUrl: 'views/setup.html',
+      .when('/create', {
+        templateUrl: 'views/create.html',
         controller: 'MainController',
         controllerAs: 'main'
       })
