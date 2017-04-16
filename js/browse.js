@@ -20,14 +20,53 @@ for (var i = 0; i < eventIds.length; i++) {
 	events.push(eventJson);
 }
 
-// console.log(events);
+var sortHelper = function(property, sortReverse) {
+	var sortOrder = 1;
+	if (sortReverse) {
+		sortOrder = -1;
+	}
 
-$(document).ready(function() {
+	return function(a, b) {
+		var result;
+		if (a[property] < b[property]) {
+			result = -1;
+		} else if (a[property] > b[property]) {
+			result = 1;
+		} else {
+			result = 0;
+		}
+
+		return result * sortOrder;
+	}
+}
+
+var rewriteEvents = function(filters, sortProperty, sortReverse) {
+	// We only need a shallow copy because we aren't editting the objects inside the array
+	var eventsCopy = events.slice();
+
+	if (filters) {
+		for (var filterKey in filters) {
+			if (filters.hasOwnProperty(filterKey)) {
+				var filterValue = filters[filterKey];
+
+				 eventsCopy = eventsCopy.filter(function(event) {
+					return event[filterKey] === filterValue;
+				});
+			}
+		}
+	}
+
+	if (sortProperty) {
+		var sortFunction = sortHelper(sortProperty, sortReverse);
+		eventsCopy.sort(sortFunction);
+	}
+
 	var eventContainerName = ".event-div-container";
 	var eventContainer = $(eventContainerName);
+	eventContainer.empty();
 
-	for (var i = 0; i < events.length; i++) {
-		var event = events[i];
+	for (var i = 0; i < eventsCopy.length; i++) {
+		var event = eventsCopy[i];
 		var eventId = event.id;
 		var eventName = event.name;
 		var eventCost = event.cost;
@@ -59,5 +98,9 @@ $(document).ready(function() {
 
 		eventContainer.append(eventDiv);
 	}
+}
 
+$(document).ready(function() {
+	rewriteEvents();
+	// rewriteEvents({"cost": 2, "participation": 4}, "participation", true);
 });
