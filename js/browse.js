@@ -5,7 +5,7 @@ var eventDescriptions = ["Come make enemies out of your friends", "Come watch a 
 var eventCosts = [2, 1, 3, 3, 1, 2, 4, 4];
 var eventPrepTimes = [1, 1, 2, 4, 1, 1, 1, 4];
 var eventParticipations = [4, 4, 2, 2, 2, 2, 4, 4];
-var eventImages = [];
+var eventImages = ["gamenight.jpg", "movienight.jpg", "chocolatefountain.jpg", "halloweenparty.jpg", "whiteelephant.jpg", "grapejuice.jpg", "sushiboba.jpg", "pietastetest.jpg"];
 
 for (var i = 0; i < eventIds.length; i++) {
 	var eventJson = {};
@@ -15,7 +15,7 @@ for (var i = 0; i < eventIds.length; i++) {
 	eventJson.cost = eventCosts[i];
 	eventJson.prepTime = eventPrepTimes[i];
 	eventJson.participation = eventParticipations[i];
-	// eventJson[image] = eventImages[i];
+	eventJson.image = eventImages[i];
 
 	events.push(eventJson);
 }
@@ -72,11 +72,12 @@ var rewriteEvents = function(filters, sortProperty, sortReverse) {
 		var eventCost = event.cost;
 		var eventPrepTime = event.prepTime;
 		var eventParticipation = event.participation;
-		// var eventImage = event.image;
+		var eventImage = event.image;
 
 		var eventDiv = $("<div class='event-div'></div>").attr("id", eventId);
-		
-		// var eventImageDiv = $("<div class='event-image'></div>").css("background-image", "url(" + eventImage + ")");
+
+		// TODO: Need to get rid of hardcoding the image div's size here and put it in css
+		var eventImageDiv = $("<div class='event-image'></div>").css("background-image", "url('./images/"+ eventImage + "')").css({'width': '300px', 'height': '300px'});
 		var eventTextDiv = $("<div class='event-text'></div>");
 
 		var eventNameDiv = $("<div class='event-name'>" + eventName + "</div>");
@@ -93,7 +94,7 @@ var rewriteEvents = function(filters, sortProperty, sortReverse) {
 		eventTextDiv.append(eventNameDiv);
 		eventTextDiv.append(eventPropertiesDiv);
 
-		// eventDiv.append(eventImageDiv);
+		eventDiv.append(eventImageDiv);
 		eventDiv.append(eventTextDiv);
 
 		eventContainer.append(eventDiv);
