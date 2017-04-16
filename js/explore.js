@@ -110,8 +110,16 @@ $(document).ready(function() {
 		$('.ui.modal').modal('show');  
 	});
 
+	var currentFilters = {};
+	var currentSortProperty;
+	var currentSortReverse;
+
 	$(".item").on("click", function() {
-		console.log($(this).attr("data-value"));
+		var filterInfo = $(this).attr("data-value");
+		var filterInfoArray = filterInfo.split("-");
+		currentFilters[filterInfoArray[0]] = parseInt(filterInfoArray[1]);
+
+		rewriteEvents(currentFilters, currentSortProperty, currentSortReverse);
 	});
 });
 
