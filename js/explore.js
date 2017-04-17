@@ -75,10 +75,9 @@ var rewriteEvents = function(filters, sortProperty, sortReverse) {
 		var eventDuration = event.duration;
 		var eventImage = event.image;
 
-		var eventDiv = $("<div class='event-div'></div>").attr("id", eventId);
+		var eventDiv = $("<div class='event-div ui segment'></div>").attr("id", eventId);
 
-		// TODO: Need to get rid of hardcoding the image div's size here and put it in css
-		var eventImageDiv = $("<div class='event-image'></div>").css("background-image", "url('./images/"+ eventImage + "')").css({'width': '300px', 'height': '300px'});
+		var eventImageDiv = $("<div class='event-image'></div>").css("background-image", "url('./images/"+ eventImage + "')");
 		var eventTextDiv = $("<div class='event-text'></div>");
 
 		var eventNameDiv = $("<div class='event-name'>" + eventName + "</div>");
@@ -100,13 +99,19 @@ var rewriteEvents = function(filters, sortProperty, sortReverse) {
 
 		eventContainer.append(eventDiv);
 	}
+
+	// hacky way to get around flex box aligning things to grid: http://stackoverflow.com/questions/18744164/flex-box-align-last-row-to-grid
+	// for (var i = 0; i < 3; i++) {
+	// 	var eventDiv = $("<div class='event-div ui segment'></div>");
+	// 	eventContainer.append(eventDiv);
+	// }
 }
 
 $(document).ready(function() {
 	rewriteEvents();
 
 	$('.ui.dropdown').dropdown();  
-    
+ 
 	var currentFilters = {};
 	var currentSortProperty;
 	var currentSortReverse = false;

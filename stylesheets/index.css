@@ -1,5 +1,36 @@
-/*stuff here*/
+body {
+    text-align: center;
+    padding: 70px 20px;
+}
+
+h1 {
+    font-size: 70px;
+    margin-bottom: 50px;
+}
+
 .container {
-    width: 60%;
-    margin: auto;
+    display: inline-block;
+    line-height: 100px;
+}
+
+.button-heading {
+    text-transform: uppercase;
+    font-size: 25px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.ui.main-button {
+    height: 100px;
+    line-height: 1em;
+    padding-left: 35px;
+    padding-right: 35px;
+    border-radius: 10px;
+    font-weight: 300;
+}
+
+.or {
+    vertical-align: middle;
+    font-size: 20px;
+    margin: 0 20px;
 }
