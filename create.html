@@ -6,22 +6,31 @@
         <meta name="description" content="Wing It!">
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
         <!--<script src="./js/create.js"></script>-->
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"/>
+        <link rel='stylesheet' href='stylesheets/base.css'/>
         <link rel='stylesheet' href='stylesheets/create.css'/>
     </head>
 
     <body>
 
-        <div class="ui menu">
-            <div class="item">
-            <div class="header item">
-                Wing It!
-            </div>
-            </div>
+        <div class="ui massive menu">
+          <a href="index.html" class="header item">Wing It!</a>
+          <a href="explore.html" class="item" id="explore-heading">Explore</a>
+          <a href="#" class="active item" id="explore-heading" >Create</a>
+          <div class="right menu">
+              <div class="ui category search item">
+                <div class="ui transparent icon input">
+                  <input class="prompt" id="user-input-search" type="text" placeholder="Search events...">
+                  <i class="search link icon" id="search-event-button"></i>
+                </div>
+                <div class="results"></div>
+              </div>    
+          </div>
         </div>
+
        <div class="container"> 
        <form class="ui form">
         <div class="field">
