@@ -104,18 +104,24 @@ var rewriteEvents = function(filters, sortProperty, sortReverse) {
 $(document).ready(function() {
 	rewriteEvents();
 	// rewriteEvents({"cost": 2, "duration": 4}, "duration", true);
-
 	$('.ui.dropdown').dropdown();  
+    
+    // Proof of concept for modal and search response, needs backending 
 	$("#stock-image").on("click", function() {
 		$('.ui.modal').modal('show');  
 	});
-
+    $("#search-event-button").on("click", function() {
+        var searchQuery = $("#user-input-search").val();
+        console.log(searchQuery);
+    });
+    
 	var currentFilters = {};
 	var currentSortProperty;
 	var currentSortReverse = false;
-
+    
 	$(".item").on("click", function() {
 		var filterInfo = $(this).attr("data-value");
+        console.log(filterInfo);
 		var filterInfoArray = filterInfo.split("-");
 		currentFilters[filterInfoArray[0]] = parseInt(filterInfoArray[1]);
 
