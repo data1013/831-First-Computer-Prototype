@@ -112,8 +112,11 @@ $(document).ready(function() {
 	$('.ui.dropdown').dropdown();  
     
     // Proof of concept for modal and search response, needs backending 
-	$("#stock-image").on("click", function() {
-		$('.ui.modal').modal('show');  
+	// $("#stock-image").on("click", function() {
+	// 	$('.ui.modal').modal('show');  
+	// });
+	$('.event-div').on("click", function() {
+		$('.ui.modal').modal('show');
 	});
     $("#search-event-button").on("click", function() {
         var searchQuery = $("#user-input-search").val();
