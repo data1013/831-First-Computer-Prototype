@@ -19,3 +19,25 @@
     background-position: center;
 }
 
+.filter-by {
+    margin-right: 10px;
+}
+
+.ui.dropdown {
+    width: 200px;
+}
+
+.ui.dropdown>.dropdown.icon {
+    position: absolute;
+    right: 18px;
+}
+
+.ui.dropdown .menu>.item>.icon, .ui.dropdown>.text>.icon {
+    margin-right: 0;
+}
+
+.caret-container {
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+}
