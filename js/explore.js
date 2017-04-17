@@ -119,11 +119,19 @@ $(document).ready(function() {
 	var currentSortProperty;
 	var currentSortReverse;
     
-	$(".user-input").on("click", function() {
+	$(".user-filter").on("click", function() {
 		var filterInfo = $(this).attr("data-value");
-        console.log(filterInfo);
 		var filterInfoArray = filterInfo.split("-");
 		currentFilters[filterInfoArray[0]] = parseInt(filterInfoArray[1]);
+
+		rewriteEvents(currentFilters, currentSortProperty, currentSortReverse);
+	});
+    
+    $(".user-sort").on("click", function() {
+		var sortInfo = $(this).attr("data-value");
+		var sortInfoArray = sortInfo.split("-");
+        currentSortProperty = sortInfoArray[0];
+        currentSortReverse = sortInfoArray[1] === "up" ? false : true;
 
 		rewriteEvents(currentFilters, currentSortProperty, currentSortReverse);
 	});
