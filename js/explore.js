@@ -140,6 +140,7 @@ $(document).ready(function() {
 
 	// Proof of concept for modal and search response, needs backending 
 	$(".event-div").on("click", function() {
+		console.log('event clicked');
 		modalDiv.empty();
 		var eventId = this.id;
 		currentModalId = eventId;
@@ -192,8 +193,8 @@ $(document).ready(function() {
 
 		var modalCommentsDiv = $("<div class='modal-comments-container'></div>");
 		var modalCommentsTitleDiv = $("<div class='modal-comments-title'>Comments</div>");
-		var modalCommentsBoxDiv = $("<div class='modal-comments-box'><form class='ui reply form'> <div class='field'><textarea></textarea></div> \
-    	<div class='ui blue labeled submit icon button'><i class='icon edit'></i> Add Reply </div> </form></div>");
+		var modalCommentsBoxDiv = $("<div class='modal-comments-box'><form class='ui reply form modal-form'> <div class='field'><textarea></textarea></div> \
+    	<div class='ui blue labeled submit icon button modal-reply-button'><i class='icon edit'></i> Add Comment </div> </form></div>");
 
 		for (var i = 0; i < eventComments.length; i++) {
 			var modalCommentsTextDiv = $("<div class='modal-comments-text'>" + eventComments[i] + "</div>");
