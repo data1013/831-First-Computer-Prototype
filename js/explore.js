@@ -139,8 +139,7 @@ $(document).ready(function() {
 	var modalDiv = $(modalName);
 
 	// Proof of concept for modal and search response, needs backending 
-	$(".event-div").on("click", function() {
-		console.log('event clicked');
+	$(document).on("click", ".event-div", function() {
 		modalDiv.empty();
 		var eventId = this.id;
 		currentModalId = eventId;
