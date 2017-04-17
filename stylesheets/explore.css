@@ -9,7 +9,7 @@
 
 .ui.event-div {
     display: inline-block;
-    margin: 20px;
+    margin: 20px !important;
 }
 
 .event-image {
