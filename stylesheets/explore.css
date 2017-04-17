@@ -41,3 +41,41 @@
     position: absolute;
     right: 10px;
 }
+
+/* MODAL STUFF */
+
+.ui.modal {
+    padding: 30px;
+}
+
+.modal-image {
+    width: 150px;
+    height: 150px;
+    float: left;
+    background-size: cover;
+    background-position: center;
+    margin-right: 30px;
+    margin-bottom: 30px;
+}
+
+.modal-name {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.modal-property {
+    line-height: 1.5em;
+}
+
+.modal-description-container {
+    clear: both;
+}
+
+.modal-description-container {
+    margin-bottom: 30px;
+}
+
+.modal-description-title, .modal-comments-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}

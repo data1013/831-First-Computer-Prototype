@@ -162,8 +162,7 @@ $(document).ready(function() {
 
 		var modalHeaderDiv = $("<div class='modal-header'></div>");
 
-		// TODO: Need to get rid of hardcoding the image div's size here and put it in css
-		var modalImageDiv = $("<div class='modal-image'></div>").css("background-image", "url('./images/"+ eventImage + "')").css({'width': '300px', 'height': '300px'});
+		var modalImageDiv = $("<div class='modal-image'></div>").css("background-image", "url('./images/"+ eventImage + "')");
 		var modalNameDiv = $("<div class='modal-name'>" + eventName + "</div>");
 		var modalPropertiesDiv = $("<div class='modal-properties'></div>");
 
