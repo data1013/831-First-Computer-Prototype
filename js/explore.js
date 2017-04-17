@@ -117,8 +117,9 @@ $(document).ready(function() {
     
 	var currentFilters = {};
 	var currentSortProperty;
-	var currentSortReverse;
+	var currentSortReverse = false;
     
+
 	$(".user-filter").on("click", function() {
 		var filterInfo = $(this).attr("data-value");
 		var filterInfoArray = filterInfo.split("-");
