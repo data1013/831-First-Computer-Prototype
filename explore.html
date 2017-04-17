@@ -17,32 +17,35 @@
           <div class="right menu">
               <div class="ui category search item">
                 <div class="ui transparent icon input">
-                  <input class="prompt" type="text" placeholder="Search events...">
-                  <i class="search link icon"></i>
+                  <input class="prompt" id="user-input-search" type="text" placeholder="Search events...">
+                  <i class="search link icon" id="search-event-button"></i>
                 </div>
                 <div class="results"></div>
               </div>    
           </div>
         </div>
+                    
+<!-- TODO: make it possible for people to "unselect" a filter  -->
+<!--TODO: for sort by, make it more obvious which caret is selected and make their hit boxes larger -->
         <div id="filterby-row">
             Filter By        
             <div class="ui dropdown button">
               <span class="text">Cost</span>
               <i class="dropdown icon"></i>
               <div class="menu">
-                <div class="item" data-value="cost-1">
+                <div class="item user-input" data-value="cost-1">
                   <span class="text">$</span>
                   <span class="description">&lt;$50</span>
                 </div>
-                <div class="item" data-value="cost-2">
+                <div class="item user-input" data-value="cost-2">
                   <span class="text">$$</span>
                   <span class="description">$50 - $100</span>
                 </div>
-                <div class="item" data-value="cost-3">
+                <div class="item user-input" data-value="cost-3">
                   <span class="text">$$$</span>
                   <span class="description">$100 - $200</span>
                 </div>
-                <div class="item" data-value="cost-4">
+                <div class="item user-input" data-value="cost-4">
                   <span class="text">$$$$</span>
                   <span class="description">&gt;$200</span>
                 </div>
@@ -52,21 +55,27 @@
               <span class="text">Prep Time</span>
               <i class="dropdown icon"></i>
               <div class="menu">
-                <div class="item" data-value="prepTime-1">
-                  <span class="text">$</span>
-                  <span class="description">&lt;$50</span>
+                <div class="item user-input" data-value="prepTime-1">
+                  <i class="clock icon"></i>
+                  <span class="description">&lt;2hr</span>
                 </div>
-                <div class="item" data-value="prepTime-2">
-                  <span class="text">$$</span>
-                  <span class="description">$50 - $100</span>
+                <div class="item user-input" data-value="prepTime-2">
+                  <i class="clock icon"></i>
+                  <i class="clock icon"></i>
+                  <span class="description">2hr - 4hr</span>
                 </div>
-                <div class="item" data-value="prepTime-3">
-                  <span class="text">$$$</span>
-                  <span class="description">$100 - $200</span>
+                <div class="item user-input" data-value="prepTime-3">
+                  <i class="clock icon"></i>
+                  <i class="clock icon"></i>
+                  <i class="clock icon"></i>
+                  <span class="description">4hr - 6hr</span>
                 </div>
-                <div class="item" data-value="prepTime-4">
-                  <span class="text">$$$$</span>
-                  <span class="description">&gt;$200</span>
+                <div class="item user-input" data-value="prepTime-4">
+                  <i class="clock icon"></i>
+                  <i class="clock icon"></i>
+                  <i class="clock icon"></i>
+                  <i class="clock icon"></i>
+                  <span class="description">&gt;6hr</span>
                 </div>
               </div>
             </div>
@@ -74,47 +83,61 @@
               <span class="text">Duration</span>
               <i class="dropdown icon"></i>
               <div class="menu">
-                <div class="item" data-value="duration-1">
-                  <span class="text">$</span>
+                <div class="item user-input" data-value="duration-1">
+                  <i class="clock icon"></i>
                   <span class="description">&lt;30min</span>
                 </div>
-                <div class="item" data-value="duration-2">
-                  <span class="text">$$</span>
+                <div class="item user-input" data-value="duration-2">
+                  <i class="clock icon"></i>
+                  <i class="clock icon"></i>
                   <span class="description">30min - 1hr</span>
                 </div>
-                <div class="item" data-value="duration-3">
-                  <span class="text">$$$</span>
+                <div class="item user-input" data-value="duration-3">
+                  <i class="clock icon"></i>
+                  <i class="clock icon"></i>
+                  <i class="clock icon"></i>
                   <span class="description">1hr - 2hr</span>
                 </div>
-                <div class="item" data-value="duration-4">
-                  <span class="text">$$$$</span>
+                <div class="item user-input" data-value="duration-4">
+                  <i class="clock icon"></i>
+                  <i class="clock icon"></i>
+                  <i class="clock icon"></i>
+                  <i class="clock icon"></i>
                   <span class="description">&gt;2hr</span>
                 </div>
               </div>
             </div>
             <div class="ui dropdown button">
-              <span class="text">Sort By PLACEHOLDER</span>
+              <span class="text">Sort By</span>
               <i class="dropdown icon"></i>
               <div class="menu">
                 <div class="item">
-                  <span class="text">$</span>
+                  <span class="text">Cost</span>
                   <div class="caret-container">
                       <i class="caret up icon user-input" data-value="cost-up"></i>
                       <i class="caret down icon user-input" data-value="cost-down"></i>                    
                   </div>
-
                 </div>
                 <div class="item">
-                  <span class="text">$$</span>
-                  <span class="description">30min - 1hr</span>
+                  <span class="text">Prep Time</span>
+                  <div class="caret-container">
+                      <i class="caret up icon user-input" data-value="prepTime-up"></i>
+                      <i class="caret down icon user-input" data-value="prepTime-down"></i>                    
+                  </div>
                 </div>
                 <div class="item">
-                  <span class="text">$$$</span>
-                  <span class="description">1hr - 2hr</span>
+                  <span class="text">Duration</span>
+                  <div class="caret-container">
+                      <i class="caret up icon user-input" data-value="duration-up"></i>
+                      <i class="caret down icon user-input" data-value="duration-down"></i>                    
+                  </div>
                 </div>
                 <div class="item">
-                  <span class="text">$$$$</span>
-                  <span class="description">&gt;2hr</span>
+                  <span class="text">Date Created</span>
+                  <div class="caret-container">
+                      <i class="caret up icon user-input" data-value="date-up"></i>
+                      <i class="caret down icon user-input" data-value="date-down"></i>                    
+                  </div>
                 </div>
               </div>
             </div>        
