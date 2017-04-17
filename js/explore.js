@@ -137,10 +137,10 @@ $(document).ready(function() {
     var currentModalId;
 	var modalName = '.ui.modal';
 	var modalDiv = $(modalName);
-	modalDiv.empty();
 
 	// Proof of concept for modal and search response, needs backending 
 	$(".event-div").on("click", function() {
+		modalDiv.empty();
 		var eventId = this.id;
 		currentModalId = eventId;
 		var event;
