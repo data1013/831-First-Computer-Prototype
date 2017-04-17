@@ -112,7 +112,7 @@ $(document).ready(function() {
 
 	var currentFilters = {};
 	var currentSortProperty;
-	var currentSortReverse;
+	var currentSortReverse = false;
 
 	$(".item").on("click", function() {
 		var filterInfo = $(this).attr("data-value");
