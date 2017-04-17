@@ -41,9 +41,17 @@ var sortHelper = function(property, sortReverse) {
 	}
 }
 
-var rewriteEvents = function(filters, sortProperty, sortReverse) {
+var rewriteEvents = function(searchQuery, filters, sortProperty, sortReverse) {
 	// We only need a shallow copy because we aren't editting the objects inside the array
 	var eventsCopy = events.slice();
+
+	if (searchQuery) {
+		eventsCopy = eventsCopy.filter(function(event) {
+			var eventNameLower = event.name.toLowerCase();
+			var searchQueryLower = searchQuery.toLowerCase();
+			return eventNameLower.indexOf(searchQueryLower) >= 0;
+		});
+	}
 
 	if (filters) {
 		for (var filterKey in filters) {
@@ -122,7 +130,7 @@ $(document).ready(function() {
 		var filterInfoArray = filterInfo.split("-");
 		currentFilters[filterInfoArray[0]] = parseInt(filterInfoArray[1]);
 
-		rewriteEvents(currentFilters, currentSortProperty, currentSortReverse);
+		rewriteEvents(null, currentFilters, currentSortProperty, currentSortReverse);
 	});
     
     $(".user-sort").on("click", function() {
@@ -131,8 +139,15 @@ $(document).ready(function() {
         currentSortProperty = sortInfoArray[0];
         currentSortReverse = sortInfoArray[1] === "up" ? false : true;
 
-		rewriteEvents(currentFilters, currentSortProperty, currentSortReverse);
+		rewriteEvents(null, currentFilters, currentSortProperty, currentSortReverse);
 	});
+
+	$("#search-event-button").on("click", function() {
+		var searchBox = $('#user-input-search');
+        var searchQuery = searchBox.val();
+        rewriteEvents(searchQuery, currentFilters, currentSortProperty, currentSortReverse);
+        searchBox.val('');
+    });
 
     var currentModalId;
 	var modalName = '.ui.modal';
@@ -162,8 +177,7 @@ $(document).ready(function() {
 
 		var modalHeaderDiv = $("<div class='modal-header'></div>");
 
-		// TODO: Need to get rid of hardcoding the image div's size here and put it in css
-		var modalImageDiv = $("<div class='modal-image'></div>").css("background-image", "url('./images/"+ eventImage + "')").css({'width': '300px', 'height': '300px'});
+		var modalImageDiv = $("<div class='modal-image'></div>").css("background-image", "url('./images/"+ eventImage + "')");
 		var modalNameDiv = $("<div class='modal-name'>" + eventName + "</div>");
 		var modalPropertiesDiv = $("<div class='modal-properties'></div>");
 
@@ -207,10 +221,4 @@ $(document).ready(function() {
 
 		$(modalName).modal('show');
 	});
-
-    $("#search-event-button").on("click", function() {
-        var searchQuery = $("#user-input-search").val();
-        console.log(searchQuery);
-    });
 });
-
