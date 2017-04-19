@@ -156,6 +156,15 @@ $(document).ready(function() {
         rewriteEvents(searchQuery, currentFilters, currentSortProperty, currentSortReverse);
         searchBox.val('');
     });
+    
+    $("#user-input-search").on("keypress", function(e) {
+        if (e.keyCode == 13) {
+    		var searchBox = $('#user-input-search');
+            var searchQuery = searchBox.val();
+            rewriteEvents(searchQuery, currentFilters, currentSortProperty, currentSortReverse);
+            searchBox.val('');        
+        }
+    })
 
     var currentModalId;
 	var modalName = '.ui.modal';

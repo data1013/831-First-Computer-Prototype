@@ -36,7 +36,9 @@
         <div id="filterby-row">
             <span class="filter-by">Filter By</span>
             <div class="ui dropdown button">
-              <span class="text">Cost</span>
+              <span class="text">Cost
+                  <span class="description">(none)</span>
+              </span>
               <i class="dropdown icon"></i>
               <div class="menu">
                 <div class="item user-filter" data-value="cost-1">
@@ -61,10 +63,16 @@
                   <i class="dollar icon"></i>
                   <span class="description">&gt;$200</span>
                 </div>
+                <div class="item user-filter" data-value="cost-none">
+                  Cost
+                  <span class="description">(none)</span>
+                </div>
               </div>
             </div>
             <div class="ui dropdown button">
-              <span class="text">Prep Time</span>
+              <span class="text">Prep Time
+                <span class="description">(none)</span>
+              </span>
               <i class="dropdown icon"></i>
               <div class="menu">
                 <div class="item user-filter" data-value="prepTime-1">
@@ -89,10 +97,16 @@
                   <i class="hand paper icon"></i>
                   <span class="description">&gt;6hr</span>
                 </div>
+                <div class="item user-filter" data-value="prepTime-none">
+                  Prep Time
+                  <span class="description">(none)</span>
+                </div>
               </div>
             </div>
             <div class="ui dropdown button">
-              <span class="text">Duration</span>
+              <span class="text">Duration
+                <span class="description">(none)</span>
+              </span>
               <i class="dropdown icon"></i>
               <div class="menu">
                 <div class="item user-filter" data-value="duration-1">
@@ -117,38 +131,35 @@
                   <i class="clock icon"></i>
                   <span class="description">&gt;2hr</span>
                 </div>
+                <div class="item user-filter" data-value="duration-none">
+                  Duration
+                  <span class="description">(none)</span>
+                </div>
               </div>
             </div>
             <div class="ui dropdown button">
               <span class="text">Sort By</span>
               <i class="dropdown icon"></i>
               <div class="menu">
-                <div class="item">
+                <div class="item user-sort" data-value="cost-up">
                   <span class="text">Cost</span>
                   <div class="caret-container">
                       <i class="caret up icon user-sort" data-value="cost-up"></i>
                       <i class="caret down icon user-sort" data-value="cost-down"></i>                    
                   </div>
                 </div>
-                <div class="item">
+                <div class="item user-sort" data-value="prepTime-up">
                   <span class="text">Prep Time</span>
                   <div class="caret-container">
                       <i class="caret up icon user-sort" data-value="prepTime-up"></i>
                       <i class="caret down icon user-sort" data-value="prepTime-down"></i>                    
                   </div>
                 </div>
-                <div class="item">
+                <div class="item user-sort" data-value="duration-up">
                   <span class="text">Duration</span>
                   <div class="caret-container">
                       <i class="caret up icon user-sort" data-value="duration-up"></i>
                       <i class="caret down icon user-sort" data-value="duration-down"></i>                    
-                  </div>
-                </div>
-                <div class="item">
-                  <span class="text">Date Created</span>
-                  <div class="caret-container">
-                      <i class="caret up icon user-sort" data-value="date-up"></i>
-                      <i class="caret down icon user-sort" data-value="date-down"></i>                    
                   </div>
                 </div>
               </div>
