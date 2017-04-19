@@ -136,7 +136,15 @@ $(document).ready(function() {
 	$(".user-filter").on("click", function() {
 		var filterInfo = $(this).attr("data-value");
 		var filterInfoArray = filterInfo.split("-");
-		currentFilters[filterInfoArray[0]] = parseInt(filterInfoArray[1]);
+
+		var filterProperty = filterInfoArray[0];
+		var filterValue = filterInfoArray[1];
+
+		if (filterValue === 'none') {
+			delete currentFilters[filterProperty];
+		} else {
+			currentFilters[filterInfoArray[0]] = parseInt(filterInfoArray[1]);
+		}
 
 		rewriteEvents(null, currentFilters, currentSortProperty, currentSortReverse);
 	});
