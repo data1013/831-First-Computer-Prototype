@@ -157,6 +157,29 @@ $(document).ready(function() {
         currentSortReverse = sortInfoArray[1] === "up" ? false : true;
 
 		rewriteEvents(null, currentFilters, currentSortProperty, currentSortReverse);
+
+		var $selected = $(this).hasClass("item") ? $(this) : $(this).closest(".item");
+		$(".user-sort").removeClass("active selected");
+		$selected.addClass("active selected");
+		var $dropdown = $(this).closest(".ui.dropdown");
+		var $dropdownText = $dropdown.find("span.text").first();
+		$dropdownText.text($selected.find("span.text").text());
+		var $dropdownCaret = $dropdown.find(".dropdown.icon");
+		$dropdownCaret.remove();
+		var $dropdownCaretContainer = $selected.find(".caret-container");
+		var $activeCaret = currentSortReverse ? $dropdownCaretContainer.find(".down") : $dropdownCaretContainer.find(".up");
+		$activeCaret.addClass("active");
+		$(".ui.dropdown>.caret.icon").remove();
+		$dropdown.append($activeCaret.clone());
+		// if (currentSortReverse) {
+			
+		// 	$dropdownCaretContainer.find(".down").addClass("active");
+		// } else {
+		// 	$dropdownCaretContainer.find(".up").addClass("active");
+		// }
+		
+
+		// console.log($dropdownCaretContainer);
 	});
 
 	$("#search-event-button").on("click", function() {

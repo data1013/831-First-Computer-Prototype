@@ -1,156 +1,159 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <title>Wing It! (Create)</title>
-        <meta charset="UTF-8">
-        <meta name="description" content="Wing It!">
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
-        <!--<script src="./js/create.js"></script>-->
-        
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"/>
-        <link rel='stylesheet' href='stylesheets/base.css'/>
-        <link rel='stylesheet' href='stylesheets/create.css'/>
-    </head>
 
-    <body>
+<head>
+    <title>Wing It! (Create)</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Wing It!">
 
-        <div class="ui massive menu">
-          <a href="index.html" class="header item">Wing It!</a>
-          <a href="explore.html" class="item" id="explore-heading">Explore</a>
-          <a href="#" class="active item" id="explore-heading" >Create</a>
-          <div class="right menu">
-              <div class="ui category search item">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <!--<script src="./js/create.js"></script>-->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css" />
+    <link rel='stylesheet' href='stylesheets/base.css' />
+    <link rel='stylesheet' href='stylesheets/create.css' />
+</head>
+
+<body>
+
+    <div class="ui massive menu">
+        <a href="index.html" class="header item">Wing It!</a>
+        <a href="explore.html" class="item" id="explore-heading">Explore</a>
+        <a href="#" class="active item" id="explore-heading">Share</a>
+        <div class="right menu">
+            <div class="ui category search item">
                 <div class="ui transparent icon input">
-                  <input class="prompt" id="user-input-search" type="text" placeholder="Search events...">
-                  <i class="search link icon" id="search-event-button"></i>
+                    <input class="prompt" id="user-input-search" type="text" placeholder="Search events...">
+                    <i class="search link icon" id="search-event-button"></i>
                 </div>
                 <div class="results"></div>
-              </div>    
-          </div>
+            </div>
         </div>
+    </div>
 
-       <div class="container"> 
-       <form class="ui form">
-        <div class="field">
-            <label>Event Name</label>
-            <input type="text" name="event-name" placeholder="Event Name">
-        </div>
+    <div class="container">
+        <h1>Share Your Event</h1>
+        <form class="ui form">
+            <div class="field">
+                <label>Event Name</label>
+                <input type="text" name="event-name" placeholder="Event Name">
+            </div>
 
-          <div class="field">
+            <div class="field">
                 <label>Description</label>
                 <textarea></textarea>
             </div>
 
-  <div class="field">
-      <label>Cost</label>
-      <div class="ui selection dropdown">
-          <input type="hidden" name="cost">
-          <i class="dropdown icon"></i>
-          <div class="default text">Cost</div>
-          <div class="menu">
-              <div class="item" data-value="0">
-                  <i class="dollar icon"></i>
-                  <span class="description"> &lt;$50</span>
-              </div>
-              <div class="item" data-value="1">
-                  <i class="dollar icon"></i>
-                  <i class="dollar icon"></i>
-                  <span class="description"> $50-$100</span>
-              </div>
-              <div class="item" data-value="2">
-                  <i class="dollar icon"></i>
-                  <i class="dollar icon"></i>
-                  <i class="dollar icon"></i>
-                  <span class="description"> $100-$200</span>
-              </div>
-              <div class="item" data-value="3">
-                  <i class="dollar icon"></i>
-                  <i class="dollar icon"></i>
-                  <i class="dollar icon"></i>
-                  <i class="dollar icon"></i>
-                  <span class="description"> &gt;$200</span>
-              </div>
-          </div>
-      </div>
-  </div>
+            <div class="field">
+                <label>Cost</label>
+                <div class="ui selection dropdown">
+                    <input type="hidden" name="cost">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Cost</div>
+                    <div class="menu">
+                        <div class="item" data-value="0">
+                            <i class="dollar icon"></i>
+                            <span class="description"> &lt;$50</span>
+                        </div>
+                        <div class="item" data-value="1">
+                            <i class="dollar icon"></i>
+                            <i class="dollar icon"></i>
+                            <span class="description"> $50-$100</span>
+                        </div>
+                        <div class="item" data-value="2">
+                            <i class="dollar icon"></i>
+                            <i class="dollar icon"></i>
+                            <i class="dollar icon"></i>
+                            <span class="description"> $100-$200</span>
+                        </div>
+                        <div class="item" data-value="3">
+                            <i class="dollar icon"></i>
+                            <i class="dollar icon"></i>
+                            <i class="dollar icon"></i>
+                            <i class="dollar icon"></i>
+                            <span class="description"> &gt;$200</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-  <div class="field">
-      <label>Preparation time</label>
-      <div class="ui selection dropdown">
-          <input type="hidden" name="preptime">
-          <i class="dropdown icon"></i>
-          <div class="default text">Prep time</div>
-          <div class="menu">
-                <div class="item user-filter" data-value="prepTime-1">
-                  <i class="hand paper icon"></i>
-                  <span class="description">&lt;2hr</span>
+            <div class="field">
+                <label>Preparation time</label>
+                <div class="ui selection dropdown">
+                    <input type="hidden" name="preptime">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Prep time</div>
+                    <div class="menu">
+                        <div class="item user-filter" data-value="prepTime-1">
+                            <i class="hand paper icon"></i>
+                            <span class="description">&lt;2hr</span>
+                        </div>
+                        <div class="item user-filter" data-value="prepTime-2">
+                            <i class="hand paper icon"></i>
+                            <i class="hand paper icon"></i>
+                            <span class="description">2hr - 4hr</span>
+                        </div>
+                        <div class="item user-filter" data-value="prepTime-3">
+                            <i class="hand paper icon"></i>
+                            <i class="hand paper icon"></i>
+                            <i class="hand paper icon"></i>
+                            <span class="description">4hr - 6hr</span>
+                        </div>
+                        <div class="item user-filter" data-value="prepTime-4">
+                            <i class="hand paper icon"></i>
+                            <i class="hand paper icon"></i>
+                            <i class="hand paper icon"></i>
+                            <i class="hand paper icon"></i>
+                            <span class="description">&gt;6hr</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="item user-filter" data-value="prepTime-2">
-                  <i class="hand paper icon"></i>
-                  <i class="hand paper icon"></i>
-                  <span class="description">2hr - 4hr</span>
-                </div>
-                <div class="item user-filter" data-value="prepTime-3">
-                  <i class="hand paper icon"></i>
-                  <i class="hand paper icon"></i>
-                  <i class="hand paper icon"></i>
-                  <span class="description">4hr - 6hr</span>
-                </div>
-                <div class="item user-filter" data-value="prepTime-4">
-                  <i class="hand paper icon"></i>
-                  <i class="hand paper icon"></i>
-                  <i class="hand paper icon"></i>
-                  <i class="hand paper icon"></i>
-                  <span class="description">&gt;6hr</span>
-                </div>
-          </div>
-      </div>
-  </div>
+            </div>
 
-  <div class="field">
-      <label>Participation</label>
-      <div class="ui selection dropdown">
-          <input type="hidden" name="participation">
-          <i class="dropdown icon"></i>
-          <div class="default text">participation</div>
-          <div class="menu">
-              <div class="item user-filter" data-value="duration-1">
-                  <i class="clock icon"></i>
-                  <span class="description">&lt;30min</span>
+            <div class="field">
+                <label>Participation</label>
+                <div class="ui selection dropdown">
+                    <input type="hidden" name="participation">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">participation</div>
+                    <div class="menu">
+                        <div class="item user-filter" data-value="duration-1">
+                            <i class="clock icon"></i>
+                            <span class="description">&lt;30min</span>
+                        </div>
+                        <div class="item user-filter" data-value="duration-2">
+                            <i class="clock icon"></i>
+                            <i class="clock icon"></i>
+                            <span class="description">30min - 1hr</span>
+                        </div>
+                        <div class="item user-filter" data-value="duration-3">
+                            <i class="clock icon"></i>
+                            <i class="clock icon"></i>
+                            <i class="clock icon"></i>
+                            <span class="description">1hr - 2hr</span>
+                        </div>
+                        <div class="item user-filter" data-value="duration-4">
+                            <i class="clock icon"></i>
+                            <i class="clock icon"></i>
+                            <i class="clock icon"></i>
+                            <i class="clock icon"></i>
+                            <span class="description">&gt;2hr</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="item user-filter" data-value="duration-2">
-                  <i class="clock icon"></i>
-                  <i class="clock icon"></i>
-                  <span class="description">30min - 1hr</span>
-                </div>
-                <div class="item user-filter" data-value="duration-3">
-                  <i class="clock icon"></i>
-                  <i class="clock icon"></i>
-                  <i class="clock icon"></i>
-                  <span class="description">1hr - 2hr</span>
-                </div>
-                <div class="item user-filter" data-value="duration-4">
-                  <i class="clock icon"></i>
-                  <i class="clock icon"></i>
-                  <i class="clock icon"></i>
-                  <i class="clock icon"></i>
-                  <span class="description">&gt;2hr</span>
-                </div>
-          </div>
-      </div>
-  </div>
+            </div>
 
 
-        <button class="ui button" type="submit">Submit</button>
+            <button class="ui button" type="submit">Submit</button>
         </form>
-        </div>
-	</body>
-</html>
-    <script>
-        $(document).ready(function(){
+    </div>
+</body>
 
-            $('.ui.dropdown').dropdown();
-        });
-    </script>
+</html>
+<script>
+    $(document).ready(function () {
+
+        $('.ui.dropdown').dropdown();
+    });
+</script>

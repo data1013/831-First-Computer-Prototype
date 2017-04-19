@@ -32,9 +32,13 @@
     float: right;
 }
 
-.ui.dropdown>.dropdown.icon {
+.ui.dropdown>.dropdown.icon, .ui.dropdown>.caret.icon {
     position: absolute;
     right: 18px;
+    line-height: 1;
+    width: auto;
+    font-size: .85714286em;
+    margin: 0 0 0 1em !important;
 }
 
 .ui.dropdown .menu>.item>.icon, .ui.dropdown>.text>.icon {
@@ -45,6 +49,14 @@
     display: inline-block;
     position: absolute;
     right: 10px;
+}
+
+.caret-container .caret {
+    color: #ddd;
+}
+
+.caret-container .caret.active {
+    color: black;
 }
 
 /* MODAL STUFF */

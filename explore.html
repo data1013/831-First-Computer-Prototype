@@ -1,175 +1,178 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <title>Wing It!</title>
-        <meta charset="UTF-8">
-        <meta name="description" content="Wing It!">
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
-        <script src="./js/explore.js"></script>
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"/>
-        <link rel='stylesheet' href='stylesheets/base.css'/>
-        <link rel='stylesheet' href='stylesheets/explore.css'/>
-    </head>
-    <body>
-        <div class="ui massive menu">
-          <a href="index.html" class="header item">Wing It!</a>
-          <a href="#" class="active item" id="explore-heading">Explore</a>
-          <a href="create.html" class="item" id="explore-heading" >Create</a>
-          <div class="right menu">
-              <div class="ui category search item">
-                <div class="ui transparent icon input">
-                  <input class="prompt" id="user-input-search" type="text" placeholder="Search events...">
-                  <i class="search link icon" id="search-event-button"></i>
-                </div>
-                <div class="results"></div>
-              </div>    
+<head>
+  <title>Wing It!</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Wing It!">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+  <script src="./js/explore.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css" />
+  <link rel='stylesheet' href='stylesheets/base.css' />
+  <link rel='stylesheet' href='stylesheets/explore.css' />
+</head>
+
+<body>
+  <div class="ui massive menu">
+    <a href="index.html" class="header item">Wing It!</a>
+    <a href="#" class="active item" id="explore-heading">Explore</a>
+    <a href="create.html" class="item" id="explore-heading">Share</a>
+    <div class="right menu">
+      <div class="ui category search item">
+        <div class="ui transparent icon input">
+          <input class="prompt" id="user-input-search" type="text" placeholder="Search events...">
+          <i class="search link icon" id="search-event-button"></i>
+        </div>
+        <div class="results"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- TODO: make it possible for people to "unselect" a filter  -->
+    <!--TODO: for sort by, make it more obvious which caret is selected and make their hit boxes larger -->
+    <div id="filterby-row">
+      <span class="filter-by">Filter By</span>
+      <div class="ui dropdown button">
+        <span class="text">Cost
+                  <span class="description">(none)</span>
+        </span>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item user-filter" data-value="cost-1">
+            <i class="dollar icon"></i>
+            <span class="description">&lt;$50</span>
+          </div>
+          <div class="item user-filter" data-value="cost-2">
+            <i class="dollar icon"></i>
+            <i class="dollar icon"></i>
+            <span class="description">$50 - $100</span>
+          </div>
+          <div class="item user-filter" data-value="cost-3">
+            <i class="dollar icon"></i>
+            <i class="dollar icon"></i>
+            <i class="dollar icon"></i>
+            <span class="description">$100 - $200</span>
+          </div>
+          <div class="item user-filter" data-value="cost-4">
+            <i class="dollar icon"></i>
+            <i class="dollar icon"></i>
+            <i class="dollar icon"></i>
+            <i class="dollar icon"></i>
+            <span class="description">&gt;$200</span>
+          </div>
+          <div class="item user-filter" data-value="cost-none">
+            Cost
+            <span class="description">(none)</span>
           </div>
         </div>
-    
-    <div class="container">
-                    
-<!-- TODO: make it possible for people to "unselect" a filter  -->
-<!--TODO: for sort by, make it more obvious which caret is selected and make their hit boxes larger -->
-        <div id="filterby-row">
-            <span class="filter-by">Filter By</span>
-            <div class="ui dropdown button">
-              <span class="text">Cost
-                  <span class="description">(none)</span>
-              </span>
-              <i class="dropdown icon"></i>
-              <div class="menu">
-                <div class="item user-filter" data-value="cost-1">
-                  <i class="dollar icon"></i>
-                  <span class="description">&lt;$50</span>
-                </div>
-                <div class="item user-filter" data-value="cost-2">
-                  <i class="dollar icon"></i>
-                  <i class="dollar icon"></i>
-                  <span class="description">$50 - $100</span>
-                </div>
-                <div class="item user-filter" data-value="cost-3">
-                  <i class="dollar icon"></i>
-                  <i class="dollar icon"></i>
-                  <i class="dollar icon"></i>
-                  <span class="description">$100 - $200</span>
-                </div>
-                <div class="item user-filter" data-value="cost-4">
-                  <i class="dollar icon"></i>
-                  <i class="dollar icon"></i>
-                  <i class="dollar icon"></i>
-                  <i class="dollar icon"></i>
-                  <span class="description">&gt;$200</span>
-                </div>
-                <div class="item user-filter" data-value="cost-none">
-                  Cost
-                  <span class="description">(none)</span>
-                </div>
-              </div>
-            </div>
-            <div class="ui dropdown button">
-              <span class="text">Prep Time
+      </div>
+      <div class="ui dropdown button">
+        <span class="text">Prep Time
                 <span class="description">(none)</span>
-              </span>
-              <i class="dropdown icon"></i>
-              <div class="menu">
-                <div class="item user-filter" data-value="prepTime-1">
-                  <i class="hand paper icon"></i>
-                  <span class="description">&lt;2hr</span>
-                </div>
-                <div class="item user-filter" data-value="prepTime-2">
-                  <i class="hand paper icon"></i>
-                  <i class="hand paper icon"></i>
-                  <span class="description">2hr - 4hr</span>
-                </div>
-                <div class="item user-filter" data-value="prepTime-3">
-                  <i class="hand paper icon"></i>
-                  <i class="hand paper icon"></i>
-                  <i class="hand paper icon"></i>
-                  <span class="description">4hr - 6hr</span>
-                </div>
-                <div class="item user-filter" data-value="prepTime-4">
-                  <i class="hand paper icon"></i>
-                  <i class="hand paper icon"></i>
-                  <i class="hand paper icon"></i>
-                  <i class="hand paper icon"></i>
-                  <span class="description">&gt;6hr</span>
-                </div>
-                <div class="item user-filter" data-value="prepTime-none">
-                  Prep Time
-                  <span class="description">(none)</span>
-                </div>
-              </div>
-            </div>
-            <div class="ui dropdown button">
-              <span class="text">Duration
-                <span class="description">(none)</span>
-              </span>
-              <i class="dropdown icon"></i>
-              <div class="menu">
-                <div class="item user-filter" data-value="duration-1">
-                  <i class="clock icon"></i>
-                  <span class="description">&lt;30min</span>
-                </div>
-                <div class="item user-filter" data-value="duration-2">
-                  <i class="clock icon"></i>
-                  <i class="clock icon"></i>
-                  <span class="description">30min - 1hr</span>
-                </div>
-                <div class="item user-filter" data-value="duration-3">
-                  <i class="clock icon"></i>
-                  <i class="clock icon"></i>
-                  <i class="clock icon"></i>
-                  <span class="description">1hr - 2hr</span>
-                </div>
-                <div class="item user-filter" data-value="duration-4">
-                  <i class="clock icon"></i>
-                  <i class="clock icon"></i>
-                  <i class="clock icon"></i>
-                  <i class="clock icon"></i>
-                  <span class="description">&gt;2hr</span>
-                </div>
-                <div class="item user-filter" data-value="duration-none">
-                  Duration
-                  <span class="description">(none)</span>
-                </div>
-              </div>
-            </div>
-            <div class="ui dropdown button">
-              <span class="text">Sort By</span>
-              <i class="dropdown icon"></i>
-              <div class="menu">
-                <div class="item user-sort" data-value="cost-up">
-                  <span class="text">Cost</span>
-                  <div class="caret-container">
-                      <i class="caret up icon user-sort" data-value="cost-up"></i>
-                      <i class="caret down icon user-sort" data-value="cost-down"></i>                    
-                  </div>
-                </div>
-                <div class="item user-sort" data-value="prepTime-up">
-                  <span class="text">Prep Time</span>
-                  <div class="caret-container">
-                      <i class="caret up icon user-sort" data-value="prepTime-up"></i>
-                      <i class="caret down icon user-sort" data-value="prepTime-down"></i>                    
-                  </div>
-                </div>
-                <div class="item user-sort" data-value="duration-up">
-                  <span class="text">Duration</span>
-                  <div class="caret-container">
-                      <i class="caret up icon user-sort" data-value="duration-up"></i>
-                      <i class="caret down icon user-sort" data-value="duration-down"></i>                    
-                  </div>
-                </div>
-              </div>
-            </div>        
+        </span>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item user-filter" data-value="prepTime-1">
+            <i class="hand paper icon"></i>
+            <span class="description">&lt;2hr</span>
+          </div>
+          <div class="item user-filter" data-value="prepTime-2">
+            <i class="hand paper icon"></i>
+            <i class="hand paper icon"></i>
+            <span class="description">2hr - 4hr</span>
+          </div>
+          <div class="item user-filter" data-value="prepTime-3">
+            <i class="hand paper icon"></i>
+            <i class="hand paper icon"></i>
+            <i class="hand paper icon"></i>
+            <span class="description">4hr - 6hr</span>
+          </div>
+          <div class="item user-filter" data-value="prepTime-4">
+            <i class="hand paper icon"></i>
+            <i class="hand paper icon"></i>
+            <i class="hand paper icon"></i>
+            <i class="hand paper icon"></i>
+            <span class="description">&gt;6hr</span>
+          </div>
+          <div class="item user-filter" data-value="prepTime-none">
+            Prep Time
+            <span class="description">(none)</span>
+          </div>
         </div>
+      </div>
+      <div class="ui dropdown button">
+        <span class="text">Duration
+                <span class="description">(none)</span>
+        </span>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item user-filter" data-value="duration-1">
+            <i class="clock icon"></i>
+            <span class="description">&lt;30min</span>
+          </div>
+          <div class="item user-filter" data-value="duration-2">
+            <i class="clock icon"></i>
+            <i class="clock icon"></i>
+            <span class="description">30min - 1hr</span>
+          </div>
+          <div class="item user-filter" data-value="duration-3">
+            <i class="clock icon"></i>
+            <i class="clock icon"></i>
+            <i class="clock icon"></i>
+            <span class="description">1hr - 2hr</span>
+          </div>
+          <div class="item user-filter" data-value="duration-4">
+            <i class="clock icon"></i>
+            <i class="clock icon"></i>
+            <i class="clock icon"></i>
+            <i class="clock icon"></i>
+            <span class="description">&gt;2hr</span>
+          </div>
+          <div class="item user-filter" data-value="duration-none">
+            Duration
+            <span class="description">(none)</span>
+          </div>
+        </div>
+      </div>
+      <div class="ui dropdown button">
+        <span class="text">Sort By</span>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item user-sort" data-value="cost-up">
+            <span class="text">Cost</span>
+            <div class="caret-container">
+              <i class="caret up icon user-sort" data-value="cost-up"></i>
+              <i class="caret down icon user-sort" data-value="cost-down"></i>
+            </div>
+          </div>
+          <div class="item user-sort" data-value="prepTime-up">
+            <span class="text">Prep Time</span>
+            <div class="caret-container">
+              <i class="caret up icon user-sort" data-value="prepTime-up"></i>
+              <i class="caret down icon user-sort" data-value="prepTime-down"></i>
+            </div>
+          </div>
+          <div class="item user-sort" data-value="duration-up">
+            <span class="text">Duration</span>
+            <div class="caret-container">
+              <i class="caret up icon user-sort" data-value="duration-up"></i>
+              <i class="caret down icon user-sort" data-value="duration-down"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class='event-div-container'></div>
 
     <div class="ui modal">
     </div>
 
-    </body>
+</body>
+
 </html>
