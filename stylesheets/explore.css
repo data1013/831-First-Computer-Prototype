@@ -18,6 +18,17 @@
     height: 300px;
     background-size: cover;
     background-position: center;
+    margin-bottom: 20px;
+}
+
+.event-name {
+    font-size: 1.5em;
+    line-height: 57px;
+    font-weight: 700;
+}
+
+.event-properties {
+    float: right;
 }
 
 .filter-by {

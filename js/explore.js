@@ -107,8 +107,8 @@ var rewriteEvents = function(searchQuery, filters, sortProperty, sortReverse) {
 		eventPropertiesDiv.append(eventPrepTimeDiv);
 		eventPropertiesDiv.append(eventDurationDiv);
 
-		eventTextDiv.append(eventNameDiv);
 		eventTextDiv.append(eventPropertiesDiv);
+		eventTextDiv.append(eventNameDiv);
 
 		eventDiv.append(eventImageDiv);
 		eventDiv.append(eventTextDiv);
