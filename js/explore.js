@@ -136,7 +136,15 @@ $(document).ready(function() {
 	$(".user-filter").on("click", function() {
 		var filterInfo = $(this).attr("data-value");
 		var filterInfoArray = filterInfo.split("-");
-		currentFilters[filterInfoArray[0]] = parseInt(filterInfoArray[1]);
+
+		var filterProperty = filterInfoArray[0];
+		var filterValue = filterInfoArray[1];
+
+		if (filterValue === 'none') {
+			delete currentFilters[filterProperty];
+		} else {
+			currentFilters[filterInfoArray[0]] = parseInt(filterInfoArray[1]);
+		}
 
 		rewriteEvents(null, currentFilters, currentSortProperty, currentSortReverse);
 	});
@@ -202,9 +210,9 @@ $(document).ready(function() {
 		var prepTimeIcons = prepTimeIcon.repeat(eventPrepTime);
 		var durationIcons = durationIcon.repeat(eventDuration);
 
-		var modalCostDiv = $("<div class='modal-property'>" + costIcons + "</div>");
-		var modalPrepTimeDiv = $("<div class='modal-property'>" + prepTimeIcons + "</div>");
-		var modalDurationDiv = $("<div class='modal-property'>" + durationIcons + "</div>");
+		var modalCostDiv = $("<div class='modal-property'>Cost: " + costIcons + "</div>");
+		var modalPrepTimeDiv = $("<div class='modal-property'>Prep Time: " + prepTimeIcons + "</div>");
+		var modalDurationDiv = $("<div class='modal-property'>Duration: " + durationIcons + "</div>");
 
 		modalPropertiesDiv.append(modalCostDiv);
 		modalPropertiesDiv.append(modalPrepTimeDiv);
