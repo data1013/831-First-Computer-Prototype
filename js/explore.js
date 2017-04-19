@@ -149,7 +149,8 @@ $(document).ready(function() {
 		rewriteEvents(null, currentFilters, currentSortProperty, currentSortReverse);
 	});
     
-    $(".user-sort").on("click", function() {
+    $(".user-sort").on("click", function(e) {
+        e.stopPropagation();
 		var sortInfo = $(this).attr("data-value");
 		var sortInfoArray = sortInfo.split("-");
         currentSortProperty = sortInfoArray[0];
