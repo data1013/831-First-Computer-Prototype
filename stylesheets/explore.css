@@ -10,6 +10,7 @@
 .ui.event-div {
     display: inline-block;
     margin: 20px !important;
+    cursor: pointer;
 }
 
 .event-image {
