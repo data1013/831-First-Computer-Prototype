@@ -7,6 +7,10 @@ var eventPrepTimes = [1, 1, 2, 4, 1, 1, 1, 4];
 var eventdurations = [4, 4, 2, 2, 2, 2, 4, 4];
 var eventImages = ["gamenight.jpg", "movienight.jpg", "chocolatefountain.jpg", "halloweenparty.jpg", "whiteelephant.jpg", "grapejuice.jpg", "sushiboba.jpg", "pietastetest.jpg"];
 
+var costIcon = '<i class="dollar icon"></i>';
+var prepTimeIcon = '<i class="hand paper icon"></i>';
+var durationIcon = '<i class="clock icon"></i>';
+
 for (var i = 0; i < eventIds.length; i++) {
 	var eventJson = {};
 	eventJson.id = eventIds[i];
@@ -91,9 +95,13 @@ var rewriteEvents = function(searchQuery, filters, sortProperty, sortReverse) {
 		var eventNameDiv = $("<div class='event-name'>" + eventName + "</div>");
 		var eventPropertiesDiv = $("<div class='event-properties'></div>");
 
-		var eventCostDiv = $("<div class='event-property'>Cost: " + eventCost + "</div>");
-		var eventPrepTimeDiv = $("<div class='event-property'>Prep Time: " + eventPrepTime + "</div>");
-		var eventDurationDiv = $("<div class='event-property'>Duration: " + eventDuration + "</div>");
+		var costIcons = costIcon.repeat(eventCost);
+		var prepTimeIcons = prepTimeIcon.repeat(eventPrepTime);
+		var durationIcons = durationIcon.repeat(eventDuration);
+
+		var eventCostDiv = $("<div class='event-property'>" + costIcons + "</div>");
+		var eventPrepTimeDiv = $("<div class='event-property'>" + prepTimeIcons + "</div>");
+		var eventDurationDiv = $("<div class='event-property'>" + durationIcons + "</div>");
 
 		eventPropertiesDiv.append(eventCostDiv);
 		eventPropertiesDiv.append(eventPrepTimeDiv);
@@ -181,9 +189,13 @@ $(document).ready(function() {
 		var modalNameDiv = $("<div class='modal-name'>" + eventName + "</div>");
 		var modalPropertiesDiv = $("<div class='modal-properties'></div>");
 
-		var modalCostDiv = $("<div class='modal-property'>Cost: " + eventCost + "</div>");
-		var modalPrepTimeDiv = $("<div class='modal-property'>Prep Time: " + eventPrepTime + "</div>");
-		var modalDurationDiv = $("<div class='modal-property'>Duration: " + eventDuration + "</div>");
+		var costIcons = costIcon.repeat(eventCost);
+		var prepTimeIcons = prepTimeIcon.repeat(eventPrepTime);
+		var durationIcons = durationIcon.repeat(eventDuration);
+
+		var modalCostDiv = $("<div class='modal-property'>" + costIcons + "</div>");
+		var modalPrepTimeDiv = $("<div class='modal-property'>" + prepTimeIcons + "</div>");
+		var modalDurationDiv = $("<div class='modal-property'>" + durationIcons + "</div>");
 
 		modalPropertiesDiv.append(modalCostDiv);
 		modalPropertiesDiv.append(modalPrepTimeDiv);
