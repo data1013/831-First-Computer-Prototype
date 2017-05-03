@@ -37,6 +37,27 @@
     <!--TODO: for sort by, make it more obvious which caret is selected and make their hit boxes larger -->
     <div id="filterby-row">
       <span class="filter-by">Filter By</span>
+      <div class="ui buttons">    
+          <button class="ui button user-filter" data-value="cost-1" onClick="jQuery(this).toggleClass('active')">
+              <i class="dollar icon"></i>
+          </button>
+          <button class="ui button user-filter" data-value="cost-2" onClick="jQuery(this).toggleClass('active')">
+              <i class="dollar icon"></i>
+              <i class="dollar icon"></i>
+          </button>
+          <button class="ui button user-filter" data-value="cost-3" onClick="jQuery(this).toggleClass('active')">
+              <i class="dollar icon"></i>
+              <i class="dollar icon"></i>
+              <i class="dollar icon"></i>
+          </button>
+          <button class="ui button user-filter" data-value="cost-4">
+              <i class="dollar icon"></i>
+              <i class="dollar icon"></i>
+              <i class="dollar icon"></i>
+              <i class="dollar icon"></i>
+          </button>
+      </div>
+        
       <div class="ui dropdown button">
         <span class="text">Cost
                   <span class="description">(none)</span>

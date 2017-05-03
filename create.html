@@ -19,16 +19,9 @@
 
     <div class="ui massive menu">
         <a href="index.html" class="header item">Wing It!</a>
-        <a href="explore.html" class="item" id="explore-heading">Explore</a>
         <a href="#" class="active item" id="explore-heading">Share</a>
+        <a href="explore.html" class="item" id="explore-heading">Explore</a>
         <div class="right menu">
-            <div class="ui category search item">
-                <div class="ui transparent icon input">
-                    <input class="prompt" id="user-input-search" type="text" placeholder="Search events...">
-                    <i class="search link icon" id="search-event-button"></i>
-                </div>
-                <div class="results"></div>
-            </div>
         </div>
     </div>
 
@@ -37,12 +30,27 @@
         <form class="ui form">
             <div class="field">
                 <label>Event Name</label>
-                <input type="text" name="event-name" placeholder="Event Name">
+                <input type="text" name="event-name" >
             </div>
 
+            
             <div class="field">
-                <label>Description</label>
-                <textarea></textarea>
+                <label>Wing</label>
+                <div class="ui selection dropdown">
+                    <input type="hidden" name="gender">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Select Next House Wing</div>
+                    <div class="menu">
+                        <div class="item" data-value="2E">2E</div>
+                        <div class="item" data-value="2W">2W</div>
+                        <div class="item" data-value="3E">3E</div>
+                        <div class="item" data-value="3W">3W</div>
+                        <div class="item" data-value="4E">4E</div>
+                        <div class="item" data-value="4W">4W</div>
+                        <div class="item" data-value="5E">5E</div>
+                        <div class="item" data-value="5W">5W</div>
+                    </div>
+                    </div>
             </div>
 
             <div class="field">
@@ -112,7 +120,7 @@
             </div>
 
             <div class="field">
-                <label>Participation</label>
+                <label>Duration</label>
                 <div class="ui selection dropdown">
                     <input type="hidden" name="participation">
                     <i class="dropdown icon"></i>
@@ -144,16 +152,43 @@
                 </div>
             </div>
 
+            <div class="field">
+                <label>Description</label>
+                <textarea></textarea>
+            </div>
 
-            <button class="ui button" type="submit">Submit</button>
+            <div class="field">
+                <label>Upload image of event </label>
+                <input name="Select File" type="file" class="upload-file"/>
+            </div>
+
+            <button class="ui button create-form-submit" type='submit'>Submit</button>
         </form>
     </div>
+
+    <div class="ui small modal">
+        <i class="close icon"></i>
+        <div class="header">
+            <i class="check green circle icon"></i>Your event has been successfully created!</div>
+    </div>
+
 </body>
 
 </html>
 <script>
     $(document).ready(function () {
-
         $('.ui.dropdown').dropdown();
+
+         $(".create-form-submit").on("click", function(e) {
+             e.preventDefault();
+            $('.small.modal').modal('show',{
+                onApprove : function() {
+                    return false; //block the modal here
+                }
+            });
+        });
     });
+
+    
+   
 </script>

@@ -6,6 +6,7 @@ var eventCosts = [2, 1, 3, 3, 1, 2, 4, 4];
 var eventPrepTimes = [1, 1, 2, 4, 1, 1, 1, 4];
 var eventdurations = [4, 4, 2, 2, 2, 2, 4, 4];
 var eventImages = ["gamenight.jpg", "movienight.jpg", "chocolatefountain.jpg", "halloweenparty.jpg", "whiteelephant.jpg", "grapejuice.jpg", "sushiboba.jpg", "pietastetest.jpg"];
+var eventComments = [["Great! We played Catan and Dominion", "Maybe some food would be nice"], ["Sending out a movie poll beforehand was nice"], ["The chocolate got everywhere"], ["You should try making people come in costumes"], ["Explaining the rules was a bit hard"], ["We ate a lot of cheese! A+ event"], ["Probably the best event I've tried"], ["I didn't make nearly as many pies, but it was still fun"]];
 
 var costIcon = '<i class="dollar icon"></i>';
 var prepTimeIcon = '<i class="hand paper icon"></i>';
@@ -20,7 +21,7 @@ for (var i = 0; i < eventIds.length; i++) {
 	eventJson.prepTime = eventPrepTimes[i];
 	eventJson.duration = eventdurations[i];
 	eventJson.image = eventImages[i];
-	eventJson.comments = [];
+	eventJson.comments = eventComments[i];
 
 	events.push(eventJson);
 }
@@ -60,11 +61,14 @@ var rewriteEvents = function(searchQuery, filters, sortProperty, sortReverse) {
 	if (filters) {
 		for (var filterKey in filters) {
 			if (filters.hasOwnProperty(filterKey)) {
-				var filterValue = filters[filterKey];
+				var filterArray = filters[filterKey];
 
-				 eventsCopy = eventsCopy.filter(function(event) {
-					return event[filterKey] === filterValue;
-				});
+				if (filterArray.length > 0) {
+					eventsCopy = eventsCopy.filter(function(event) {
+						console.log(event[filterKey]);
+						return filterArray.indexOf(parseInt(event[filterKey])) > -1;
+					});
+				}
 			}
 		}
 	}
@@ -115,12 +119,6 @@ var rewriteEvents = function(searchQuery, filters, sortProperty, sortReverse) {
 
 		eventContainer.append(eventDiv);
 	}
-
-	// hacky way to get around flex box aligning things to grid: http://stackoverflow.com/questions/18744164/flex-box-align-last-row-to-grid
-	// for (var i = 0; i < 3; i++) {
-	// 	var eventDiv = $("<div class='event-div ui segment'></div>");
-	// 	eventContainer.append(eventDiv);
-	// }
 }
 
 $(document).ready(function() {
@@ -128,7 +126,7 @@ $(document).ready(function() {
 
 	$('.ui.dropdown').dropdown();  
  
-	var currentFilters = {};
+	var currentFilters = {"cost": [], "prepTime": [], "duration": []};
 	var currentSortProperty;
 	var currentSortReverse = false;
     
@@ -138,12 +136,15 @@ $(document).ready(function() {
 		var filterInfoArray = filterInfo.split("-");
 
 		var filterProperty = filterInfoArray[0];
-		var filterValue = filterInfoArray[1];
+		var filterValue = parseInt(filterInfoArray[1]);
 
-		if (filterValue === 'none') {
-			delete currentFilters[filterProperty];
+		var currentFilterArray = currentFilters[filterInfoArray[0]];
+		var currentFilterIndex = currentFilterArray.indexOf(filterValue);
+
+		if (currentFilterIndex > -1) {
+			currentFilterArray.splice(currentFilterIndex, 1);
 		} else {
-			currentFilters[filterInfoArray[0]] = parseInt(filterInfoArray[1]);
+			currentFilterArray.push(filterValue);
 		}
 
 		rewriteEvents(null, currentFilters, currentSortProperty, currentSortReverse);
@@ -171,15 +172,6 @@ $(document).ready(function() {
 		$activeCaret.addClass("active");
 		$(".ui.dropdown>.caret.icon").remove();
 		$dropdown.append($activeCaret.clone());
-		// if (currentSortReverse) {
-			
-		// 	$dropdownCaretContainer.find(".down").addClass("active");
-		// } else {
-		// 	$dropdownCaretContainer.find(".up").addClass("active");
-		// }
-		
-
-		// console.log($dropdownCaretContainer);
 	});
 
 	$("#search-event-button").on("click", function() {
