@@ -178,7 +178,6 @@ $(document).ready(function() {
 		var searchBox = $('#user-input-search');
         var searchQuery = searchBox.val();
         rewriteEvents(searchQuery, currentFilters, currentSortProperty, currentSortReverse);
-        searchBox.val('');
     });
     
     $("#user-input-search").on("keypress", function(e) {
@@ -186,9 +185,14 @@ $(document).ready(function() {
     		var searchBox = $('#user-input-search');
             var searchQuery = searchBox.val();
             rewriteEvents(searchQuery, currentFilters, currentSortProperty, currentSortReverse);
-            searchBox.val('');        
         }
     })
+
+    $('#search-clear-button').on("click", function() {
+    	var searchBox = $('#user-input-search');
+    	searchBox.val('');
+    	rewriteEvents(null, currentFilters, currentSortProperty, currentSortReverse);
+    });
 
     var currentModalId;
 	var modalName = '.ui.modal';
