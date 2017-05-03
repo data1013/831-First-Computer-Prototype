@@ -1,6 +1,18 @@
-body {
+body, html {
+    margin: 0;
+}
+
+.intro {
     text-align: center;
     padding: 70px 20px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro-container {
+    margin-bottom: 70px;
 }
 
 h1 {
@@ -8,7 +20,7 @@ h1 {
     margin-bottom: 50px;
 }
 
-.container {
+.buttons {
     display: inline-block;
     line-height: 100px;
 }
@@ -37,4 +49,29 @@ button {
     vertical-align: middle;
     font-size: 20px;
     margin: 0 20px;
+}
+
+.about {
+    padding: 70px 70px;
+    background-color: #767676;
+    color: white;
+    font-size: 18px;
+}
+
+.ideas {
+    display: flex;
+    margin-top: 50px;
+}
+
+.idea-container {
+    padding: 40px;
+    text-align: center;
+}
+
+.idea-container .icon {
+    font-size: 70px;
+}
+
+p.idea {
+    font-size: 21px;
 }
