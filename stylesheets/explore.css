@@ -1,3 +1,7 @@
+.center.menu {
+    margin-left: auto !important;
+}
+
 .button.ui.user-filter.activee {
     background-color: green;
 }
