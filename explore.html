@@ -38,19 +38,19 @@
     <div id="filterby-row">
       <span class="filter-by">Filter By</span>
       <div class="ui buttons">    
-          <button class="ui button user-filter" data-value="cost-1" onClick="jQuery(this).toggleClass('active')">
+          <button class="ui button user-filter" data-value="cost-1" data-tooltip="Cost: &lt;$50" data-position="top center" onClick="jQuery(this).toggleClass('active')">
               <i class="dollar icon"></i>
           </button>
-          <button class="ui button user-filter" data-value="cost-2" onClick="jQuery(this).toggleClass('active')">
-              <i class="dollar icon"></i>
-              <i class="dollar icon"></i>
-          </button>
-          <button class="ui button user-filter" data-value="cost-3" onClick="jQuery(this).toggleClass('active')">
-              <i class="dollar icon"></i>
+          <button class="ui button user-filter" data-value="cost-2" data-tooltip="Cost: $50 - $100" data-position="top center" onClick="jQuery(this).toggleClass('active')">
               <i class="dollar icon"></i>
               <i class="dollar icon"></i>
           </button>
-          <button class="ui button user-filter" data-value="cost-4">
+          <button class="ui button user-filter" data-value="cost-3" data-tooltip="Cost: $100 - $200" data-position="top center" onClick="jQuery(this).toggleClass('active')">
+              <i class="dollar icon"></i>
+              <i class="dollar icon"></i>
+              <i class="dollar icon"></i>
+          </button>
+          <button class="ui button user-filter" data-value="cost-4" data-tooltip="Cost: &gt;$200" data-position="top center" onClick="jQuery(this).toggleClass('active')">
               <i class="dollar icon"></i>
               <i class="dollar icon"></i>
               <i class="dollar icon"></i>
@@ -58,108 +58,48 @@
           </button>
       </div>
         
-      <div class="ui dropdown button">
-        <span class="text">Cost
-                  <span class="description">(none)</span>
-        </span>
-        <i class="dropdown icon"></i>
-        <div class="menu">
-          <div class="item user-filter" data-value="cost-1">
-            <i class="dollar icon"></i>
-            <span class="description">&lt;$50</span>
-          </div>
-          <div class="item user-filter" data-value="cost-2">
-            <i class="dollar icon"></i>
-            <i class="dollar icon"></i>
-            <span class="description">$50 - $100</span>
-          </div>
-          <div class="item user-filter" data-value="cost-3">
-            <i class="dollar icon"></i>
-            <i class="dollar icon"></i>
-            <i class="dollar icon"></i>
-            <span class="description">$100 - $200</span>
-          </div>
-          <div class="item user-filter" data-value="cost-4">
-            <i class="dollar icon"></i>
-            <i class="dollar icon"></i>
-            <i class="dollar icon"></i>
-            <i class="dollar icon"></i>
-            <span class="description">&gt;$200</span>
-          </div>
-          <div class="item user-filter" data-value="cost-none">
-            Cost
-            <span class="description">(none)</span>
-          </div>
-        </div>
+      <div class="ui buttons">    
+          <button class="ui button user-filter" data-value="prepTime-1" data-tooltip="Prep Time: &lt;2hr" data-position="top center" onClick="jQuery(this).toggleClass('active')">
+              <i class="hand paper icon"></i>
+          </button>
+          <button class="ui button user-filter" data-value="prepTime-2" data-tooltip="Prep Time: 2hr - 4hr" data-position="top center" onClick="jQuery(this).toggleClass('active')">
+              <i class="hand paper icon"></i>
+              <i class="hand paper icon"></i>
+          </button>
+          <button class="ui button user-filter" data-value="prepTime-3" data-tooltip="Prep Time: 4hr - 6hr" data-position="top center" onClick="jQuery(this).toggleClass('active')">
+              <i class="hand paper icon"></i>
+              <i class="hand paper icon"></i>
+              <i class="hand paper icon"></i>
+          </button>
+          <button class="ui button user-filter" data-value="prepTime-4" data-tooltip="Prep Time: &gt;6hr" data-position="top center" onClick="jQuery(this).toggleClass('active')">
+              <i class="hand paper icon"></i>
+              <i class="hand paper icon"></i>
+              <i class="hand paper icon"></i>
+              <i class="hand paper icon"></i>
+          </button>
       </div>
-      <div class="ui dropdown button">
-        <span class="text">Prep Time
-                <span class="description">(none)</span>
-        </span>
-        <i class="dropdown icon"></i>
-        <div class="menu">
-          <div class="item user-filter" data-value="prepTime-1">
-            <i class="hand paper icon"></i>
-            <span class="description">&lt;2hr</span>
-          </div>
-          <div class="item user-filter" data-value="prepTime-2">
-            <i class="hand paper icon"></i>
-            <i class="hand paper icon"></i>
-            <span class="description">2hr - 4hr</span>
-          </div>
-          <div class="item user-filter" data-value="prepTime-3">
-            <i class="hand paper icon"></i>
-            <i class="hand paper icon"></i>
-            <i class="hand paper icon"></i>
-            <span class="description">4hr - 6hr</span>
-          </div>
-          <div class="item user-filter" data-value="prepTime-4">
-            <i class="hand paper icon"></i>
-            <i class="hand paper icon"></i>
-            <i class="hand paper icon"></i>
-            <i class="hand paper icon"></i>
-            <span class="description">&gt;6hr</span>
-          </div>
-          <div class="item user-filter" data-value="prepTime-none">
-            Prep Time
-            <span class="description">(none)</span>
-          </div>
-        </div>
+        
+      <div class="ui buttons">    
+          <button class="ui button user-filter" data-value="duration-1" data-tooltip="Duration: &lt;30min" data-position="top center" onClick="jQuery(this).toggleClass('active')">
+              <i class="clock icon"></i>
+          </button>
+          <button class="ui button user-filter" data-value="duration-2" data-tooltip="Duration: 30min - 1hr" data-position="top center" onClick="jQuery(this).toggleClass('active')">
+              <i class="clock icon"></i>
+              <i class="clock icon"></i>
+          </button>
+          <button class="ui button user-filter" data-value="duration-3" data-tooltip="Duration: 1hr - 2hr" data-position="top center" onClick="jQuery(this).toggleClass('active')">
+              <i class="clock icon"></i>
+              <i class="clock icon"></i>
+              <i class="clock icon"></i>
+          </button>
+          <button class="ui button user-filter" data-value="duration-4" data-tooltip="Duration: &gt;2hr" data-position="top center" onClick="jQuery(this).toggleClass('active')">
+              <i class="clock icon"></i>
+              <i class="clock icon"></i>
+              <i class="clock icon"></i>
+              <i class="clock icon"></i>
+          </button>
       </div>
-      <div class="ui dropdown button">
-        <span class="text">Duration
-                <span class="description">(none)</span>
-        </span>
-        <i class="dropdown icon"></i>
-        <div class="menu">
-          <div class="item user-filter" data-value="duration-1">
-            <i class="clock icon"></i>
-            <span class="description">&lt;30min</span>
-          </div>
-          <div class="item user-filter" data-value="duration-2">
-            <i class="clock icon"></i>
-            <i class="clock icon"></i>
-            <span class="description">30min - 1hr</span>
-          </div>
-          <div class="item user-filter" data-value="duration-3">
-            <i class="clock icon"></i>
-            <i class="clock icon"></i>
-            <i class="clock icon"></i>
-            <span class="description">1hr - 2hr</span>
-          </div>
-          <div class="item user-filter" data-value="duration-4">
-            <i class="clock icon"></i>
-            <i class="clock icon"></i>
-            <i class="clock icon"></i>
-            <i class="clock icon"></i>
-            <span class="description">&gt;2hr</span>
-          </div>
-          <div class="item user-filter" data-value="duration-none">
-            Duration
-            <span class="description">(none)</span>
-          </div>
-        </div>
-      </div>
+        
       <div class="ui dropdown button">
         <span class="text">Sort By</span>
         <i class="dropdown icon"></i>
