@@ -48,6 +48,10 @@
     margin-right: 10px;
 }
 
+.caret-container .caret {
+    font-size: 24px;
+}
+
 .ui.dropdown {
     width: 200px;
 }
