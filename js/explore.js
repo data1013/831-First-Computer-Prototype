@@ -138,7 +138,7 @@ $(document).ready(function() {
  
  	var currentSearchQuery = null;
 	var currentFilters = {"cost": [], "prepTime": [], "duration": []};
-	var currentSortProperty;
+	var currentSortProperty = null;
 	var currentSortReverse = false;
     
 
@@ -166,25 +166,31 @@ $(document).ready(function() {
     $(".user-sort").on("click", function(e) {
         e.stopPropagation();
 		var sortInfo = $(this).attr("data-value");
-		var sortInfoArray = sortInfo.split("-");
-        currentSortProperty = sortInfoArray[0];
-        currentSortReverse = sortInfoArray[1] === "up" ? false : true;
+
+		if (sortInfo === "None") {
+			currentSortProperty = null;
+		} else {
+			var sortInfoArray = sortInfo.split("-");
+	        currentSortProperty = sortInfoArray[0];
+	        currentSortReverse = sortInfoArray[1] === "up" ? false : true;
+
+			var $selected = $(this).hasClass("item") ? $(this) : $(this).closest(".item");
+			$(".user-sort").removeClass("active selected");
+			$selected.addClass("active selected");
+			var $dropdown = $(this).closest(".ui.dropdown");
+			var $dropdownText = $dropdown.find("span.text").first();
+			$dropdownText.text($selected.find("span.text").text());
+			var $dropdownCaret = $dropdown.find(".dropdown.icon");
+			$dropdownCaret.remove();
+			var $dropdownCaretContainer = $selected.find(".caret-container");
+			var $activeCaret = currentSortReverse ? $dropdownCaretContainer.find(".down") : $dropdownCaretContainer.find(".up");
+			$activeCaret.addClass("active");
+			$(".ui.dropdown>.caret.icon").remove();
+			$dropdown.append($activeCaret.clone());
+		}
 
 		rewriteEvents(currentSearchQuery, currentFilters, currentSortProperty, currentSortReverse);
-
-		var $selected = $(this).hasClass("item") ? $(this) : $(this).closest(".item");
-		$(".user-sort").removeClass("active selected");
-		$selected.addClass("active selected");
-		var $dropdown = $(this).closest(".ui.dropdown");
-		var $dropdownText = $dropdown.find("span.text").first();
-		$dropdownText.text($selected.find("span.text").text());
-		var $dropdownCaret = $dropdown.find(".dropdown.icon");
-		$dropdownCaret.remove();
-		var $dropdownCaretContainer = $selected.find(".caret-container");
-		var $activeCaret = currentSortReverse ? $dropdownCaretContainer.find(".down") : $dropdownCaretContainer.find(".up");
-		$activeCaret.addClass("active");
-		$(".ui.dropdown>.caret.icon").remove();
-		$dropdown.append($activeCaret.clone());
+		
 	});
 
 	$("#search-event-button").on("click", function() {
