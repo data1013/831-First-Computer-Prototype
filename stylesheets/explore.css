@@ -154,3 +154,8 @@ body {
     right: 0;
     color: black;
 }
+
+.property-label {
+    width: 85px;
+    display: inline-block;
+}
