@@ -18,3 +18,9 @@
 .ui.action.input.error:not([class*="left action"])>.button:last-child {
     border: #db2828 solid 1px;
 }
+
+.ui.modal>.close {
+    top: 0px;
+    right: 0;
+    color: black;
+}
