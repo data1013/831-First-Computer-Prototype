@@ -5,7 +5,6 @@
 .button.ui.user-filter.activee {
     background-color: green;
 }
-
 .container {
     margin: 25px 60px;
 }
@@ -62,6 +61,15 @@
 
 .ui.dropdown .menu>.item>.icon, .ui.dropdown>.text>.icon {
     margin-right: 0;
+}
+
+.ui.button:not(.icon)>.icon:not(.button):not(.dropdown) {
+    margin: 0;
+    width: 12px;
+}
+
+.ui.button {
+    padding: .78571429em 1em;
 }
 
 .caret-container {
