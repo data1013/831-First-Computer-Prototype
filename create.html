@@ -8,7 +8,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
-    <!--<script src="./js/create.js"></script>-->
+    <script src="./js/create.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css" />
     <link rel='stylesheet' href='stylesheets/base.css' />
@@ -33,11 +33,11 @@
                 <input type="text" name="eventname" >
             </div>
 
-            
+
             <div class="field">
                 <label>Wing</label>
                 <div class="ui selection dropdown">
-                    <input type="hidden" name="gender">
+                    <input type="hidden" name="wing">
                     <i class="dropdown icon"></i>
                     <div class="default text">Select Next House Wing</div>
                     <div class="menu">
@@ -50,7 +50,7 @@
                         <div class="item" data-value="5E">5E</div>
                         <div class="item" data-value="5W">5W</div>
                     </div>
-                    </div>
+                </div>
             </div>
 
             <div class="field">
@@ -124,7 +124,7 @@
                 <div class="ui selection dropdown">
                     <input type="hidden" name="participation">
                     <i class="dropdown icon"></i>
-                    <div class="default text">participation</div>
+                    <div class="default text">Duration</div>
                     <div class="menu">
                         <div class="item user-filter" data-value="duration-1">
                             <i class="clock icon"></i>
@@ -154,12 +154,18 @@
 
             <div class="field">
                 <label>Description</label>
-                <textarea></textarea>
+                <textarea name="description" ></textarea>
             </div>
 
             <div class="field">
                 <label>Upload image of event </label>
-                <input name="Select File" type="file" class="upload-file"/>
+                <div class="ui action input">
+                    <input type="text" id="_attachmentName" readonly placeholder="Choose image file">
+                    <label for="attachmentName" class="ui icon button btn-file">
+                        <i class="attach icon"></i>
+                        <input type="file" id="attachmentName" name="attachmentName" style="display: none">
+                    </label>
+                </div>
             </div>
 
             <button class="ui button create-form-submit" type='submit'>Submit</button>
@@ -200,15 +206,32 @@
                     rules: [
                     {
                         type   : 'empty',
-                        prompt : 'Please enter your name hehehe'
+                        prompt : 'Please enter an event name'
                     }
                     ]
                 },
+                wing: {
+                    identifier: 'wing',
+                    rules: [
+                    {
+                        type   : 'empty',
+                        prompt : 'Please select a wing'
+                    }
+                    ]
+                },
+                description: {
+                    identifier: 'description',
+                    rules: [
+                    {
+                        type   : 'empty',
+                        prompt : 'Please enter a description'
+                    }
+                    ]
+                },
+                
                 }
             })
             ;
     });
 
-    
-   
 </script>
