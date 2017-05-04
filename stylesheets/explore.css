@@ -63,6 +63,15 @@
     margin-right: 0;
 }
 
+.ui.button:not(.icon)>.icon:not(.button):not(.dropdown) {
+    margin: 0;
+    width: 12px;
+}
+
+.ui.button {
+    padding: .78571429em 1em;
+}
+
 .caret-container {
     display: inline-block;
     position: absolute;
