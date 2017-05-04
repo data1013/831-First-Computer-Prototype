@@ -20,7 +20,7 @@ body {
 }
 
 .ui.dropdown.button {
-    margin-left: 30px;
+    margin-left: 0px;
 }
 
 .ui.button.user-filter {
@@ -71,8 +71,12 @@ body {
 .caret-container .caret {
     font-size: 24px;
 }
-
-.ui.dropdown {
+.sort-container {
+    display: inline-block;
+    margin-left: 30px;
+}
+.ui.dropdown.button {
+    margin-left: 10px;
     width: 200px;
 }
 
