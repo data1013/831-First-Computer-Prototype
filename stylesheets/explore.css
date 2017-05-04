@@ -11,6 +11,18 @@
     margin: 25px 60px;
 }
 
+.ui.buttons.filterButtonsContainer {
+    margin-right: 10px;
+}
+
+.ui.button.user-filter {
+    border-right: thin solid rgba(34,36,38,.15);
+}
+
+.ui.button.user-filter:last-child {
+    border-right: none;
+}
+
 #filterby-row {
     margin-left: 20px;
     margin-right: 20px;
