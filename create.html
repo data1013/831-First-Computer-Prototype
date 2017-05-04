@@ -31,14 +31,14 @@
         <form class="ui form">
             <div class="field">
                 <label>Event Name</label>
-                <input type="text" name="event-name">
+                <input type="text" name="eventname" >
             </div>
 
 
             <div class="field">
                 <label>Wing</label>
                 <div class="ui selection dropdown">
-                    <input type="hidden" name="gender">
+                    <input type="hidden" name="wing">
                     <i class="dropdown icon"></i>
                     <div class="default text">Select Next House Wing</div>
                     <div class="menu">
@@ -155,7 +155,7 @@
 
             <div class="field">
                 <label>Description</label>
-                <textarea></textarea>
+                <textarea name="description" ></textarea>
             </div>
 
             <div class="field">
@@ -170,6 +170,7 @@
             </div>
 
             <button class="ui button create-form-submit" type='submit'>Submit</button>
+              <div class="ui error message"></div>
         </form>
     </div>
 
@@ -186,14 +187,52 @@
     $(document).ready(function () {
         $('.ui.dropdown').dropdown();
 
-        $(".create-form-submit").on("click", function (e) {
-            e.preventDefault();
-            $('.small.modal').modal('show', {
-                onApprove: function () {
-                    return false; //block the modal here
-                }
-            });
+         $(".create-form-submit").on("click", function(e) {
+            //  e.preventDefault();
+            // $('.small.modal').modal({
+            //     onHide: function(){
+            //         console.log('hidden');
+            //          location.reload();
+
+            //     }}).modal('show');
         });
+
+
+
+        $('.ui.form')
+            .form({
+                fields: {
+                eventname: {
+                    identifier: 'eventname',
+                    rules: [
+                    {
+                        type   : 'empty',
+                        prompt : 'Please enter an event name'
+                    }
+                    ]
+                },
+                wing: {
+                    identifier: 'wing',
+                    rules: [
+                    {
+                        type   : 'empty',
+                        prompt : 'Please select a wing'
+                    }
+                    ]
+                },
+                description: {
+                    identifier: 'description',
+                    rules: [
+                    {
+                        type   : 'empty',
+                        prompt : 'Please enter a description'
+                    }
+                    ]
+                },
+                
+                }
+            })
+            ;
     });
 
 </script>
