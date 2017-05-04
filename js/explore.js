@@ -134,11 +134,11 @@ var rewriteEvents = function (searchQuery, filters, sortProperty, sortReverse) {
 $(document).ready(function () {
 	rewriteEvents();
 
-	$('.ui.dropdown').dropdown();
-
-	var currentSearchQuery = null;
-	var currentFilters = { "cost": [], "prepTime": [], "duration": [] };
-	var currentSortProperty;
+	$('.ui.dropdown').dropdown();  
+ 
+ 	var currentSearchQuery = null;
+	var currentFilters = {"cost": [], "prepTime": [], "duration": []};
+	var currentSortProperty = null;
 	var currentSortReverse = false;
 
 
@@ -170,21 +170,30 @@ $(document).ready(function () {
 		currentSortProperty = sortInfoArray[0];
 		currentSortReverse = sortInfoArray[1] === "up" ? false : true;
 
-		rewriteEvents(currentSearchQuery, currentFilters, currentSortProperty, currentSortReverse);
+		if (sortInfo === "None") {
+			currentSortProperty = null;
+		} else {
+			var sortInfoArray = sortInfo.split("-");
+	        currentSortProperty = sortInfoArray[0];
+	        currentSortReverse = sortInfoArray[1] === "up" ? false : true;
 
-		var $selected = $(this).hasClass("item") ? $(this) : $(this).closest(".item");
-		$(".user-sort").removeClass("active selected");
-		$selected.addClass("active selected");
-		var $dropdown = $(this).closest(".ui.dropdown");
-		var $dropdownText = $dropdown.find("span.text").first();
-		$dropdownText.text($selected.find("span.text").text());
-		var $dropdownCaret = $dropdown.find(".dropdown.icon");
-		$dropdownCaret.remove();
-		var $dropdownCaretContainer = $selected.find(".caret-container");
-		var $activeCaret = currentSortReverse ? $dropdownCaretContainer.find(".down") : $dropdownCaretContainer.find(".up");
-		$activeCaret.addClass("active");
-		$(".ui.dropdown>.caret.icon").remove();
-		$dropdown.append($activeCaret.clone());
+			var $selected = $(this).hasClass("item") ? $(this) : $(this).closest(".item");
+			$(".user-sort").removeClass("active selected");
+			$selected.addClass("active selected");
+			var $dropdown = $(this).closest(".ui.dropdown");
+			var $dropdownText = $dropdown.find("span.text").first();
+			$dropdownText.text($selected.find("span.text").text());
+			var $dropdownCaret = $dropdown.find(".dropdown.icon");
+			$dropdownCaret.remove();
+			var $dropdownCaretContainer = $selected.find(".caret-container");
+			var $activeCaret = currentSortReverse ? $dropdownCaretContainer.find(".down") : $dropdownCaretContainer.find(".up");
+			$activeCaret.addClass("active");
+			$(".ui.dropdown>.caret.icon").remove();
+			$dropdown.append($activeCaret.clone());
+		}
+
+		rewriteEvents(currentSearchQuery, currentFilters, currentSortProperty, currentSortReverse);
+		
 	});
 
 	$("#search-event-button").on("click", function () {
@@ -213,7 +222,16 @@ $(document).ready(function () {
 		rewriteEvents(currentSearchQuery, currentFilters, currentSortProperty, currentSortReverse);
 	});
 
-	var currentModalId;
+    $(document).on("click", ".modal-reply-button", function() {
+		var commentInputBox = $('.comment-input');
+		var commentText = commentInputBox.val();
+		commentInputBox.val('');
+
+		var commentDiv = $("<div class='modal-comments-text'>" + commentText + "</div>");
+		$(".modal-comments-box").append(commentDiv);
+	});
+
+    var currentModalId;
 	var modalName = '.ui.modal';
 	var modalDiv = $(modalName);
 
@@ -279,8 +297,8 @@ $(document).ready(function () {
 		var modalCommentsDiv = $("<div class='modal-comments-container'></div>");
 		var modalCommentsTitleDiv = $("<div class='modal-comments-title'>Comments</div>");
 		var modalCommentsBoxDiv = $("<div class='modal-comments-box'></div>");
-		var modalCommentsAddDiv = $("<div class='modal-comments-add'><form class='ui reply form modal-form'> <div class='field'><textarea></textarea></div> \
-    	<div class='ui blue labeled submit icon button modal-reply-button'><i class='icon edit'></i> Add Comment </div> </form></div>");
+		var modalCommentsAddDiv = $("<div class='modal-comments-add'><form class='ui reply form modal-form'> <div class='field'><textarea class='comment-input'></textarea></div> \
+    	<div class='ui blue labeled submit icon button modal-reply-button' id='modal-comment-submit-button'><i class='icon edit'></i> Add Comment </div> </form></div>");
 
 		for (var i = 0; i < eventComments.length; i++) {
 			var modalCommentsTextDiv = $("<div class='modal-comments-text'>" + eventComments[i] + "</div>");
