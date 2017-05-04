@@ -136,6 +136,7 @@ $(document).ready(function() {
 
 	$('.ui.dropdown').dropdown();  
  
+ 	var currentSearchQuery = null;
 	var currentFilters = {"cost": [], "prepTime": [], "duration": []};
 	var currentSortProperty;
 	var currentSortReverse = false;
@@ -157,7 +158,7 @@ $(document).ready(function() {
 			currentFilterArray.push(filterValue);
 		}
 
-		rewriteEvents(null, currentFilters, currentSortProperty, currentSortReverse);
+		rewriteEvents(currentSearchQuery, currentFilters, currentSortProperty, currentSortReverse);
 
 		$(this).blur();
 	});
@@ -169,7 +170,7 @@ $(document).ready(function() {
         currentSortProperty = sortInfoArray[0];
         currentSortReverse = sortInfoArray[1] === "up" ? false : true;
 
-		rewriteEvents(null, currentFilters, currentSortProperty, currentSortReverse);
+		rewriteEvents(currentSearchQuery, currentFilters, currentSortProperty, currentSortReverse);
 
 		var $selected = $(this).hasClass("item") ? $(this) : $(this).closest(".item");
 		$(".user-sort").removeClass("active selected");
@@ -188,8 +189,8 @@ $(document).ready(function() {
 
 	$("#search-event-button").on("click", function() {
 		var searchBox = $('#user-input-search');
-        var searchQuery = searchBox.val();
-        rewriteEvents(searchQuery, currentFilters, currentSortProperty, currentSortReverse);
+        currentSearchQuery = searchBox.val();
+        rewriteEvents(currentSearchQuery, currentFilters, currentSortProperty, currentSortReverse);
     });
 
     $('#user-input-search').on("click", function(e) {
@@ -199,8 +200,8 @@ $(document).ready(function() {
     $("#user-input-search").on("keypress", function(e) {
         if (e.keyCode == 13) {
         	var searchBox = $('#user-input-search');
-            var searchQuery = searchBox.val();
-            rewriteEvents(searchQuery, currentFilters, currentSortProperty, currentSortReverse);
+            currentSearchQuery = searchBox.val();
+            rewriteEvents(currentSearchQuery, currentFilters, currentSortProperty, currentSortReverse);
         }
     })
 
@@ -208,7 +209,8 @@ $(document).ready(function() {
     	var searchBox = $('#user-input-search');
     	searchBox.val('');
     	searchBox.attr("placeholder", "Search events...");
-    	rewriteEvents(null, currentFilters, currentSortProperty, currentSortReverse);
+    	currentSearchQuery = null;
+    	rewriteEvents(currentSearchQuery, currentFilters, currentSortProperty, currentSortReverse);
     });
 
     var currentModalId;
