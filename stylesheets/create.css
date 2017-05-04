@@ -9,8 +9,12 @@
     margin-right: 0;
 }
 
-/*.ui.icon.button.upload-file {
-    width: 100%;
-    padding: .67857143em 1em;
-    border: 1px solid rgba(34,36,38,.15);
-}*/
+.ui.action.input.error input {
+    background-color: #ffe8e6;
+    border-color: #db2828;
+    color: #db2828;
+}
+
+.ui.action.input.error:not([class*="left action"])>.button:last-child {
+    border: #db2828 solid 1px;
+}
