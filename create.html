@@ -204,9 +204,17 @@
                     ]
                 },
                 
-                }
-            })
-            ;
+            },  
+            onSuccess: function(event, fields) {
+                event.preventDefault();
+                $('.small.modal').modal({
+                    onHide: function(){
+                        console.log('hidden');
+                        location.reload();
+
+                    }}).modal('show');
+            }
+        });
     });
 
 </script>
