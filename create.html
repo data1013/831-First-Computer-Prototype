@@ -8,7 +8,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
-    <!--<script src="./js/create.js"></script>-->
+    <script src="./js/create.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css" />
     <link rel='stylesheet' href='stylesheets/base.css' />
@@ -30,10 +30,10 @@
         <form class="ui form">
             <div class="field">
                 <label>Event Name</label>
-                <input type="text" name="event-name" >
+                <input type="text" name="event-name">
             </div>
 
-            
+
             <div class="field">
                 <label>Wing</label>
                 <div class="ui selection dropdown">
@@ -50,7 +50,7 @@
                         <div class="item" data-value="5E">5E</div>
                         <div class="item" data-value="5W">5W</div>
                     </div>
-                    </div>
+                </div>
             </div>
 
             <div class="field">
@@ -159,7 +159,13 @@
 
             <div class="field">
                 <label>Upload image of event </label>
-                <input name="Select File" type="file" class="upload-file"/>
+                <div class="ui action input">
+                    <input type="text" id="_attachmentName" readonly placeholder="Choose image file">
+                    <label for="attachmentName" class="ui icon button btn-file">
+                        <i class="attach icon"></i>
+                        <input type="file" id="attachmentName" name="attachmentName" style="display: none">
+                    </label>
+                </div>
             </div>
 
             <button class="ui button create-form-submit" type='submit'>Submit</button>
@@ -179,16 +185,14 @@
     $(document).ready(function () {
         $('.ui.dropdown').dropdown();
 
-         $(".create-form-submit").on("click", function(e) {
-             e.preventDefault();
-            $('.small.modal').modal('show',{
-                onApprove : function() {
+        $(".create-form-submit").on("click", function (e) {
+            e.preventDefault();
+            $('.small.modal').modal('show', {
+                onApprove: function () {
                     return false; //block the modal here
                 }
             });
         });
     });
 
-    
-   
 </script>
