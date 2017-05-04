@@ -53,10 +53,11 @@
                     </div>
                 </div>
             </div>
+            
             <div class="field">
                 <label>Cost</label>
                 <div class="ui buttons cost">    
-                    <button class="ui button user-filter" data-value="cost-1" data-tooltip="Cost: &lt;$50" data-position="top center" onClick="jQuery(this).toggleClass('active')">
+                    <button class="ui button user-filter" data-value="cost-1" data-tooltip="Cost: &lt;$50" data-position="top center" onClick="jQuery('.cost').blur(); jQuery(this).toggleClass('active'); ">
                         <i class="dollar icon"></i>
                     </button>
                     <button class="ui button user-filter" data-value="cost-2" data-tooltip="Cost: $50 - $100" data-position="top center" onClick="jQuery(this).toggleClass('active')">
@@ -160,18 +161,10 @@
 <script>
     $(document).ready(function () {
         $('.ui.dropdown').dropdown();
+
         $(".user-filter").on("click",function(e){
             e.preventDefault();
         })
-         $(".create-form-submit").on("click", function(e) {
-            //  e.preventDefault();
-            // $('.small.modal').modal({
-            //     onHide: function(){
-            //         console.log('hidden');
-            //          location.reload();
-
-            //     }}).modal('show');
-        });
 
         $('.ui.form')
             .form({
