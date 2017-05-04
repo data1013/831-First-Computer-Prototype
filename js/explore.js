@@ -32,13 +32,13 @@ for (var i = 0; i < eventIds.length; i++) {
 	events.push(eventJson);
 }
 
-var sortHelper = function(property, sortReverse) {
+var sortHelper = function (property, sortReverse) {
 	var sortOrder = 1;
 	if (sortReverse) {
 		sortOrder = -1;
 	}
 
-	return function(a, b) {
+	return function (a, b) {
 		var result;
 		if (a[property] < b[property]) {
 			result = -1;
@@ -52,12 +52,12 @@ var sortHelper = function(property, sortReverse) {
 	}
 }
 
-var rewriteEvents = function(searchQuery, filters, sortProperty, sortReverse) {
+var rewriteEvents = function (searchQuery, filters, sortProperty, sortReverse) {
 	// We only need a shallow copy because we aren't editting the objects inside the array
 	var eventsCopy = events.slice();
 
 	if (searchQuery) {
-		eventsCopy = eventsCopy.filter(function(event) {
+		eventsCopy = eventsCopy.filter(function (event) {
 			var eventNameLower = event.name.toLowerCase();
 			var searchQueryLower = searchQuery.toLowerCase();
 			return eventNameLower.indexOf(searchQueryLower) >= 0;
@@ -70,7 +70,7 @@ var rewriteEvents = function(searchQuery, filters, sortProperty, sortReverse) {
 				var filterArray = filters[filterKey];
 
 				if (filterArray.length > 0) {
-					eventsCopy = eventsCopy.filter(function(event) {
+					eventsCopy = eventsCopy.filter(function (event) {
 						console.log(event[filterKey]);
 						return filterArray.indexOf(parseInt(event[filterKey])) > -1;
 					});
@@ -99,7 +99,7 @@ var rewriteEvents = function(searchQuery, filters, sortProperty, sortReverse) {
 
 		var eventDiv = $("<div class='event-div ui segment'></div>").attr("id", eventId);
 
-		var eventImageDiv = $("<div class='event-image'></div>").css("background-image", "url('./images/"+ eventImage + "')");
+		var eventImageDiv = $("<div class='event-image'></div>").css("background-image", "url('./images/" + eventImage + "')");
 		var eventTextDiv = $("<div class='event-text'></div>");
 
 		var eventNameDiv = $("<div class='event-name'>" + eventName + "</div>");
@@ -108,11 +108,11 @@ var rewriteEvents = function(searchQuery, filters, sortProperty, sortReverse) {
 		var costIcons = costIcon.repeat(eventCost);
 		var prepTimeIcons = prepTimeIcon.repeat(eventPrepTime);
 		var durationIcons = durationIcon.repeat(eventDuration);
-        
-        var costPopupString = "'Cost: " + costConversion[eventCost] + "' ";
-        var prepTimePopupString = "'Prep Time: " + prepTimeConversion[eventPrepTime] + "' ";
-        var durationPopupString = "'Duration: " + durationConversion[eventDuration] + "' ";
-    
+
+		var costPopupString = "'Cost: " + costConversion[eventCost] + "' ";
+		var prepTimePopupString = "'Prep Time: " + prepTimeConversion[eventPrepTime] + "' ";
+		var durationPopupString = "'Duration: " + durationConversion[eventDuration] + "' ";
+
 		var eventCostDiv = $("<div class='event-property' data-tooltip=" + costPopupString + "data-position='left center'>" + costIcons + "</div>");
 		var eventPrepTimeDiv = $("<div class='event-property 'data-tooltip=" + prepTimePopupString + "data-position='left center'>" + prepTimeIcons + "</div>");
 		var eventDurationDiv = $("<div class='event-property' data-tooltip=" + durationPopupString + "data-position='left center'>" + durationIcons + "</div>");
@@ -131,18 +131,18 @@ var rewriteEvents = function(searchQuery, filters, sortProperty, sortReverse) {
 	}
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
 	rewriteEvents();
 
 	$('.ui.dropdown').dropdown();  
  
  	var currentSearchQuery = null;
 	var currentFilters = {"cost": [], "prepTime": [], "duration": []};
-	var currentSortProperty;
+	var currentSortProperty = null;
 	var currentSortReverse = false;
-    
 
-	$(".user-filter").on("click", function() {
+
+	$(".user-filter").on("click", function () {
 		var filterInfo = $(this).attr("data-value");
 		var filterInfoArray = filterInfo.split("-");
 
@@ -162,56 +162,65 @@ $(document).ready(function() {
 
 		$(this).blur();
 	});
-    
-    $(".user-sort").on("click", function(e) {
-        e.stopPropagation();
+
+	$(".user-sort").on("click", function (e) {
+		e.stopPropagation();
 		var sortInfo = $(this).attr("data-value");
 		var sortInfoArray = sortInfo.split("-");
-        currentSortProperty = sortInfoArray[0];
-        currentSortReverse = sortInfoArray[1] === "up" ? false : true;
+		currentSortProperty = sortInfoArray[0];
+		currentSortReverse = sortInfoArray[1] === "up" ? false : true;
+
+		if (sortInfo === "None") {
+			currentSortProperty = null;
+		} else {
+			var sortInfoArray = sortInfo.split("-");
+	        currentSortProperty = sortInfoArray[0];
+	        currentSortReverse = sortInfoArray[1] === "up" ? false : true;
+
+			var $selected = $(this).hasClass("item") ? $(this) : $(this).closest(".item");
+			$(".user-sort").removeClass("active selected");
+			$selected.addClass("active selected");
+			var $dropdown = $(this).closest(".ui.dropdown");
+			var $dropdownText = $dropdown.find("span.text").first();
+			$dropdownText.text($selected.find("span.text").text());
+			var $dropdownCaret = $dropdown.find(".dropdown.icon");
+			$dropdownCaret.remove();
+			var $dropdownCaretContainer = $selected.find(".caret-container");
+			var $activeCaret = currentSortReverse ? $dropdownCaretContainer.find(".down") : $dropdownCaretContainer.find(".up");
+			$activeCaret.addClass("active");
+			$(".ui.dropdown>.caret.icon").remove();
+			$dropdown.append($activeCaret.clone());
+		}
 
 		rewriteEvents(currentSearchQuery, currentFilters, currentSortProperty, currentSortReverse);
-
-		var $selected = $(this).hasClass("item") ? $(this) : $(this).closest(".item");
-		$(".user-sort").removeClass("active selected");
-		$selected.addClass("active selected");
-		var $dropdown = $(this).closest(".ui.dropdown");
-		var $dropdownText = $dropdown.find("span.text").first();
-		$dropdownText.text($selected.find("span.text").text());
-		var $dropdownCaret = $dropdown.find(".dropdown.icon");
-		$dropdownCaret.remove();
-		var $dropdownCaretContainer = $selected.find(".caret-container");
-		var $activeCaret = currentSortReverse ? $dropdownCaretContainer.find(".down") : $dropdownCaretContainer.find(".up");
-		$activeCaret.addClass("active");
-		$(".ui.dropdown>.caret.icon").remove();
-		$dropdown.append($activeCaret.clone());
+		
 	});
 
-	$("#search-event-button").on("click", function() {
+	$("#search-event-button").on("click", function () {
 		var searchBox = $('#user-input-search');
-        currentSearchQuery = searchBox.val();
-        rewriteEvents(currentSearchQuery, currentFilters, currentSortProperty, currentSortReverse);
-    });
+		currentSearchQuery = searchBox.val();
+		rewriteEvents(currentSearchQuery, currentFilters, currentSortProperty, currentSortReverse);
+	});
 
-    $('#user-input-search').on("click", function(e) {
-    	$(this).removeAttr("placeholder");
-    });
-    
-    $("#user-input-search").on("keypress", function(e) {
-        if (e.keyCode == 13) {
-        	var searchBox = $('#user-input-search');
-            currentSearchQuery = searchBox.val();
-            rewriteEvents(currentSearchQuery, currentFilters, currentSortProperty, currentSortReverse);
-        }
-    })
+	$('#user-input-search').on("click", function (e) {
+		$(this).removeAttr("placeholder");
+	});
 
-    $('#search-clear-button').on("click", function() {
-    	var searchBox = $('#user-input-search');
-    	searchBox.val('');
-    	searchBox.attr("placeholder", "Search events...");
-    	currentSearchQuery = null;
-    	rewriteEvents(currentSearchQuery, currentFilters, currentSortProperty, currentSortReverse);
-    });
+	$("#user-input-search").on("keypress", function (e) {
+		if (e.keyCode == 13) {
+			var searchBox = $('#user-input-search');
+			currentSearchQuery = searchBox.val();
+			rewriteEvents(currentSearchQuery, currentFilters, currentSortProperty, currentSortReverse);
+		}
+	})
+
+	$('#search-clear-button').on("click", function () {
+		var searchBox = $('#user-input-search');
+		searchBox.val('');
+		searchBox.attr("placeholder", "Search events...");
+		currentSearchQuery = null;
+		rewriteEvents(currentSearchQuery, currentFilters, currentSortProperty, currentSortReverse);
+	});
 
     $(document).on("click", ".modal-reply-button", function() {
 		var commentInputBox = $('.comment-input');
@@ -226,7 +235,7 @@ $(document).ready(function() {
 	var modalName = '.ui.modal';
 	var modalDiv = $(modalName);
 
-	$(document).on("click", ".event-div", function() {
+	$(document).on("click", ".event-div", function () {
 		modalDiv.empty();
 		var eventId = this.id;
 		currentModalId = eventId;
@@ -246,13 +255,13 @@ $(document).ready(function() {
 		var eventCost = event.cost;
 		var eventPrepTime = event.prepTime;
 		var eventDuration = event.duration;
-		var eventImage = event.image;  
+		var eventImage = event.image;
 		var eventDescription = event.description;
 		var eventComments = event.comments;
 
 		var modalHeaderDiv = $("<div class='modal-header'></div>");
 
-		var modalImageDiv = $("<div class='modal-image'></div>").css("background-image", "url('./images/"+ eventImage + "')");
+		var modalImageDiv = $("<div class='modal-image'></div>").css("background-image", "url('./images/" + eventImage + "')");
 		var modalNameDiv = $("<div class='modal-name'>" + eventName + "</div>");
 		var modalWingDiv = $("<div class='modal-wing'>Wing: " + eventWing + "</div>");
 		var modalPropertiesDiv = $("<div class='modal-properties'></div>");
@@ -303,5 +312,26 @@ $(document).ready(function() {
 		modalDiv.append(modalCommentsDiv);
 
 		$(modalName).modal('show');
+
+		$("i.close.icon").click(closeCheck);
 	});
 });
+
+var copy;
+
+function closeCheck(e) {
+	if ($(".ui.reply.form.modal-form textarea").val() != "") {
+		copy = $.extend(true, {}, e);
+		e.stopPropagation();
+		$(".verify").remove();
+		$(".ui.modal").append('<div class="verify ui floating message warning"><p>Are you sure you want to exit? You have an unposted comment.</p><button class="ui button green modal-continue">Continue</button><button class="ui button red modal-exit">Exit</button></div>');
+
+		$(".modal-exit").click(function() {
+			$(copy.target.parentNode).trigger(copy);
+		});
+
+		$(".modal-continue").click(function() {
+			$(".verify").remove();
+		});
+	}
+}
