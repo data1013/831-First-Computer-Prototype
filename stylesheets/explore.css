@@ -1,3 +1,7 @@
+body {
+    overflow-y: scroll;
+}
+
 .center.menu {
     margin-left: auto !important;
     margin-right: auto !important;
