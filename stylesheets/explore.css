@@ -20,6 +20,10 @@
     cursor: pointer;
 }
 
+.ui.event-div:hover {
+    background-color: #e9e9e9;
+}
+
 .event-image {
     width: 300px;
     height: 300px;
