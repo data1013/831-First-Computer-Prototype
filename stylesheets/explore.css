@@ -72,10 +72,6 @@ body {
     width: 200px;
 }
 
-.ui.dropdown:last-of-type {
-    float: right;
-}
-
 .ui.dropdown>.dropdown.icon, .ui.dropdown>.caret.icon {
     position: absolute;
     right: 18px;
