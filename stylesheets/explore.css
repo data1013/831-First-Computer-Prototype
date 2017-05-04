@@ -142,3 +142,9 @@
     border: 1px solid gray;
     margin-bottom: 7px;
 }
+
+.ui.modal>.close {
+    top: 0px;
+    right: 0;
+    color: black;
+}
