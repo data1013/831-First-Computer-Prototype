@@ -13,6 +13,10 @@ var costIcon = '<i class="dollar icon"></i>';
 var prepTimeIcon = '<i class="hand paper icon"></i>';
 var durationIcon = '<i class="clock icon"></i>';
 
+var costConversion = ["", "&lt;$50", "$50 - $100", "$100 - $200", "&gt;$200"];
+var prepTimeConversion = ["", "&lt;2hr", "2hr - 4hr", "4hr - 6hr", "&gt;6hr"];
+var durationConversion = ["", "&lt;30min", "30min - 1hr", "1hr - 2hr", "&gt;2hr"];
+
 for (var i = 0; i < eventIds.length; i++) {
 	var eventJson = {};
 	eventJson.id = eventIds[i];
@@ -105,10 +109,10 @@ var rewriteEvents = function(searchQuery, filters, sortProperty, sortReverse) {
 		var prepTimeIcons = prepTimeIcon.repeat(eventPrepTime);
 		var durationIcons = durationIcon.repeat(eventDuration);
         
-        var costPopupString = "Cost: " + eventCost;
-        var prepTimePopupString = "Prep Time: " + eventPrepTime;
-        var durationPopupString = "Duration: " + eventDuration;
-        
+        var costPopupString = "'Cost: " + costConversion[eventCost] + "' ";
+        var prepTimePopupString = "'Prep Time: " + prepTimeConversion[eventPrepTime] + "' ";
+        var durationPopupString = "'Duration: " + durationConversion[eventDuration] + "' ";
+    
 		var eventCostDiv = $("<div class='event-property' data-tooltip=" + costPopupString + "data-position='left center'>" + costIcons + "</div>");
 		var eventPrepTimeDiv = $("<div class='event-property 'data-tooltip=" + prepTimePopupString + "data-position='left center'>" + prepTimeIcons + "</div>");
 		var eventDurationDiv = $("<div class='event-property' data-tooltip=" + durationPopupString + "data-position='left center'>" + durationIcons + "</div>");
