@@ -104,10 +104,14 @@ var rewriteEvents = function(searchQuery, filters, sortProperty, sortReverse) {
 		var costIcons = costIcon.repeat(eventCost);
 		var prepTimeIcons = prepTimeIcon.repeat(eventPrepTime);
 		var durationIcons = durationIcon.repeat(eventDuration);
-
-		var eventCostDiv = $("<div class='event-property'>" + costIcons + "</div>");
-		var eventPrepTimeDiv = $("<div class='event-property'>" + prepTimeIcons + "</div>");
-		var eventDurationDiv = $("<div class='event-property'>" + durationIcons + "</div>");
+        
+        var costPopupString = "Cost: " + eventCost;
+        var prepTimePopupString = "Prep Time: " + eventPrepTime;
+        var durationPopupString = "Duration: " + eventDuration;
+        
+		var eventCostDiv = $("<div class='event-property' data-tooltip=" + costPopupString + "data-position='left center'>" + costIcons + "</div>");
+		var eventPrepTimeDiv = $("<div class='event-property 'data-tooltip=" + prepTimePopupString + "data-position='left center'>" + prepTimeIcons + "</div>");
+		var eventDurationDiv = $("<div class='event-property' data-tooltip=" + durationPopupString + "data-position='left center'>" + durationIcons + "</div>");
 
 		eventPropertiesDiv.append(eventCostDiv);
 		eventPropertiesDiv.append(eventPrepTimeDiv);
