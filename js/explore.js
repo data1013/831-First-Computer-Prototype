@@ -1,6 +1,7 @@
 var events = [];
 var eventIds = [0, 1, 2, 3, 4, 5, 6, 7]
 var eventNames = ["Board Game Night", "Movie Night", "Chocolate Fountain", "Halloween Party", "White Elephant", "Grape Juice and Cheese", "Sushi and Boba", "Pie Taste Testing"];
+var eventWings = ["2E", "2W", "3E", "3W", "4E", "4W", "5E", "5W"];
 var eventDescriptions = ["Come make enemies out of your friends", "Come watch a movie", "Come eat chocolate out of a fountain", "Come get spooped", "Better than secret santa!", "Fancy break for the underaged", "The two best things about life", "Bake 314 pies!"];
 var eventCosts = [2, 1, 3, 3, 1, 2, 4, 4];
 var eventPrepTimes = [1, 1, 2, 4, 1, 1, 1, 4];
@@ -16,6 +17,7 @@ for (var i = 0; i < eventIds.length; i++) {
 	var eventJson = {};
 	eventJson.id = eventIds[i];
 	eventJson.name = eventNames[i];
+	eventJson.wing = eventWings[i];
 	eventJson.description = eventDescriptions[i];
 	eventJson.cost = eventCosts[i];
 	eventJson.prepTime = eventPrepTimes[i];
@@ -178,7 +180,6 @@ $(document).ready(function() {
 		var searchBox = $('#user-input-search');
         var searchQuery = searchBox.val();
         rewriteEvents(searchQuery, currentFilters, currentSortProperty, currentSortReverse);
-        searchBox.val('');
     });
     
     $("#user-input-search").on("keypress", function(e) {
@@ -186,20 +187,26 @@ $(document).ready(function() {
     		var searchBox = $('#user-input-search');
             var searchQuery = searchBox.val();
             rewriteEvents(searchQuery, currentFilters, currentSortProperty, currentSortReverse);
-            searchBox.val('');        
         }
     })
+
+    $('#search-clear-button').on("click", function() {
+    	var searchBox = $('#user-input-search');
+    	searchBox.val('');
+    	rewriteEvents(null, currentFilters, currentSortProperty, currentSortReverse);
+    });
 
     var currentModalId;
 	var modalName = '.ui.modal';
 	var modalDiv = $(modalName);
 
-	// Proof of concept for modal and search response, needs backending 
 	$(document).on("click", ".event-div", function() {
 		modalDiv.empty();
 		var eventId = this.id;
 		currentModalId = eventId;
 		var event;
+
+		modalDiv.append("<i class='close icon'></i>");
 
 		for (var i = 0; i < events.length; i++) {
 			if (events[i].id === parseInt(eventId)) {
@@ -209,6 +216,7 @@ $(document).ready(function() {
 		}
 
 		var eventName = event.name;
+		var eventWing = event.wing;
 		var eventCost = event.cost;
 		var eventPrepTime = event.prepTime;
 		var eventDuration = event.duration;
@@ -220,6 +228,7 @@ $(document).ready(function() {
 
 		var modalImageDiv = $("<div class='modal-image'></div>").css("background-image", "url('./images/"+ eventImage + "')");
 		var modalNameDiv = $("<div class='modal-name'>" + eventName + "</div>");
+		var modalWingDiv = $("<div class='modal-wing'>Wing: " + eventWing + "</div>");
 		var modalPropertiesDiv = $("<div class='modal-properties'></div>");
 
 		var costIcons = costIcon.repeat(eventCost);
@@ -236,6 +245,7 @@ $(document).ready(function() {
 
 		modalHeaderDiv.append(modalImageDiv);
 		modalHeaderDiv.append(modalNameDiv);
+		modalHeaderDiv.append(modalWingDiv);
 		modalHeaderDiv.append(modalPropertiesDiv);
 
 		modalDiv.append(modalHeaderDiv);

@@ -61,9 +61,11 @@ button {
 .ideas {
     display: flex;
     margin-top: 50px;
+    width: 100%;
 }
 
 .idea-container {
+    flex: 1 0 0;
     padding: 40px;
     text-align: center;
 }
