@@ -158,6 +158,8 @@ $(document).ready(function() {
 		}
 
 		rewriteEvents(null, currentFilters, currentSortProperty, currentSortReverse);
+
+		$(this).blur();
 	});
     
     $(".user-sort").on("click", function(e) {
