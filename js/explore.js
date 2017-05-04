@@ -189,10 +189,14 @@ $(document).ready(function() {
         var searchQuery = searchBox.val();
         rewriteEvents(searchQuery, currentFilters, currentSortProperty, currentSortReverse);
     });
+
+    $('#user-input-search').on("click", function(e) {
+    	$(this).removeAttr("placeholder");
+    });
     
     $("#user-input-search").on("keypress", function(e) {
         if (e.keyCode == 13) {
-    		var searchBox = $('#user-input-search');
+        	var searchBox = $('#user-input-search');
             var searchQuery = searchBox.val();
             rewriteEvents(searchQuery, currentFilters, currentSortProperty, currentSortReverse);
         }
@@ -201,6 +205,7 @@ $(document).ready(function() {
     $('#search-clear-button').on("click", function() {
     	var searchBox = $('#user-input-search');
     	searchBox.val('');
+    	searchBox.attr("placeholder", "Search events...");
     	rewriteEvents(null, currentFilters, currentSortProperty, currentSortReverse);
     });
 

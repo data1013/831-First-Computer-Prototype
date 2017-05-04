@@ -1,10 +1,12 @@
 .center.menu {
     margin-left: auto !important;
+    margin-right: auto !important;
 }
 
-.button.ui.user-filter.activee {
-    background-color: green;
+.ui.category.search.item {
+    width: 450px;
 }
+
 .container {
     margin: 25px 60px;
 }
