@@ -213,6 +213,15 @@ $(document).ready(function() {
     	rewriteEvents(currentSearchQuery, currentFilters, currentSortProperty, currentSortReverse);
     });
 
+    $(document).on("click", ".modal-reply-button", function() {
+		var commentInputBox = $('.comment-input');
+		var commentText = commentInputBox.val();
+		commentInputBox.val('');
+
+		var commentDiv = $("<div class='modal-comments-text'>" + commentText + "</div>");
+		$(".modal-comments-box").append(commentDiv);
+	});
+
     var currentModalId;
 	var modalName = '.ui.modal';
 	var modalDiv = $(modalName);
@@ -279,8 +288,8 @@ $(document).ready(function() {
 		var modalCommentsDiv = $("<div class='modal-comments-container'></div>");
 		var modalCommentsTitleDiv = $("<div class='modal-comments-title'>Comments</div>");
 		var modalCommentsBoxDiv = $("<div class='modal-comments-box'></div>");
-		var modalCommentsAddDiv = $("<div class='modal-comments-add'><form class='ui reply form modal-form'> <div class='field'><textarea></textarea></div> \
-    	<div class='ui blue labeled submit icon button modal-reply-button'><i class='icon edit'></i> Add Comment </div> </form></div>");
+		var modalCommentsAddDiv = $("<div class='modal-comments-add'><form class='ui reply form modal-form'> <div class='field'><textarea class='comment-input'></textarea></div> \
+    	<div class='ui blue labeled submit icon button modal-reply-button' id='modal-comment-submit-button'><i class='icon edit'></i> Add Comment </div> </form></div>");
 
 		for (var i = 0; i < eventComments.length; i++) {
 			var modalCommentsTextDiv = $("<div class='modal-comments-text'>" + eventComments[i] + "</div>");
