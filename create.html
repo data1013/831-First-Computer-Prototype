@@ -30,7 +30,7 @@
         <form class="ui form">
             <div class="field">
                 <label>Event Name</label>
-                <input type="text" name="event-name" >
+                <input type="text" name="eventname" >
             </div>
 
             
@@ -163,6 +163,7 @@
             </div>
 
             <button class="ui button create-form-submit" type='submit'>Submit</button>
+              <div class="ui error message"></div>
         </form>
     </div>
 
@@ -180,13 +181,32 @@
         $('.ui.dropdown').dropdown();
 
          $(".create-form-submit").on("click", function(e) {
-             e.preventDefault();
-            $('.small.modal').modal('show',{
-                onApprove : function() {
-                    return false; //block the modal here
-                }
-            });
+            //  e.preventDefault();
+            // $('.small.modal').modal({
+            //     onHide: function(){
+            //         console.log('hidden');
+            //          location.reload();
+
+            //     }}).modal('show');
         });
+
+
+
+        $('.ui.form')
+            .form({
+                fields: {
+                eventname: {
+                    identifier: 'eventname',
+                    rules: [
+                    {
+                        type   : 'empty',
+                        prompt : 'Please enter your name hehehe'
+                    }
+                    ]
+                },
+                }
+            })
+            ;
     });
 
     
