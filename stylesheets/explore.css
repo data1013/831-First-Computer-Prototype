@@ -64,12 +64,12 @@ body {
     margin-right: 10px;
 }
 
-.ui.dropdown {
-    width: 200px;
+.caret-container .caret {
+    font-size: 24px;
 }
 
-.ui.dropdown:last-of-type {
-    float: right;
+.ui.dropdown {
+    width: 200px;
 }
 
 .ui.dropdown>.dropdown.icon, .ui.dropdown>.caret.icon {

@@ -31,7 +31,7 @@
         <form class="ui form">
             <div class="field">
                 <label>Event Name</label>
-                <input type="text" name="eventname" >
+                <input type="text" name="eventname" autofocus>
             </div>
 
 
@@ -204,9 +204,17 @@
                     ]
                 },
                 
-                }
-            })
-            ;
+            },  
+            onSuccess: function(event, fields) {
+                event.preventDefault();
+                $('.small.modal').modal({
+                    onHide: function(){
+                        console.log('hidden');
+                        location.reload();
+
+                    }}).modal('show');
+            }
+        });
     });
 
 </script>

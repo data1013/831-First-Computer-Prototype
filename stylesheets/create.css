@@ -18,3 +18,22 @@
 .ui.action.input.error:not([class*="left action"])>.button:last-child {
     border: #db2828 solid 1px;
 }
+
+.ui.modal>.close {
+    top: 0px;
+    right: 0;
+    color: black;
+}
+
+.ui.button:not(.icon)>.icon:not(.button):not(.dropdown) {
+    margin: 0;
+    width: 12px;
+}
+
+.ui.button.user-filter {
+    border-right: thin solid rgba(34,36,38,.15);
+}
+
+.ui.button.user-filter:last-child {
+    border-right: none;
+}
