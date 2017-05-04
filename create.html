@@ -57,19 +57,19 @@
             <div class="field">
                 <label>Cost</label>
                 <div class="ui buttons cost">    
-                    <button class="ui button user-filter" data-value="cost-1" data-tooltip="Cost: &lt;$50" data-position="top center" onClick="jQuery('.cost').blur(); jQuery(this).toggleClass('active'); ">
+                    <button class="ui button user-filter" id="cost-1" data-tooltip="Cost: &lt;$50" data-position="top center" onClick="jQuery(this).toggleClass('active');">
                         <i class="dollar icon"></i>
                     </button>
-                    <button class="ui button user-filter" data-value="cost-2" data-tooltip="Cost: $50 - $100" data-position="top center" onClick="jQuery(this).toggleClass('active')">
-                        <i class="dollar icon"></i>
-                        <i class="dollar icon"></i>
-                    </button>
-                    <button class="ui button user-filter" data-value="cost-3" data-tooltip="Cost: $100 - $200" data-position="top center" onClick="jQuery(this).toggleClass('active')">
-                        <i class="dollar icon"></i>
+                    <button class="ui button user-filter" id="cost-2" data-tooltip="Cost: $50 - $100" data-position="top center" onClick="jQuery(this).toggleClass('active')">
                         <i class="dollar icon"></i>
                         <i class="dollar icon"></i>
                     </button>
-                    <button class="ui button user-filter" data-value="cost-4" data-tooltip="Cost: &gt;$200" data-position="top center" onClick="jQuery(this).toggleClass('active')">
+                    <button class="ui button user-filter" id="cost-3" data-tooltip="Cost: $100 - $200" data-position="top center" onClick="jQuery(this).toggleClass('active')">
+                        <i class="dollar icon"></i>
+                        <i class="dollar icon"></i>
+                        <i class="dollar icon"></i>
+                    </button>
+                    <button class="ui button user-filter" id="cost-4" data-tooltip="Cost: &gt;$200" data-position="top center" onClick="jQuery(this).toggleClass('active')">
                         <i class="dollar icon"></i>
                         <i class="dollar icon"></i>
                         <i class="dollar icon"></i>
@@ -81,19 +81,19 @@
             <div class="field">
                 <label>Preparation time</label>
                 <div class="ui buttons">    
-                <button class="ui button user-filter" data-tooltip="Prep Time: &lt;2hr" data-position="top center" onClick="jQuery(this).toggleClass('active')">
+                <button class="ui button user-filter" id="prep-1" data-tooltip="Prep Time: &lt;2hr" data-position="top center" onClick="jQuery(this).toggleClass('active')">
                     <i class="hand paper icon"></i>
                 </button>
-                <button class="ui button user-filter" data-tooltip="Prep Time: 2hr - 4hr" data-position="top center" onClick="jQuery(this).toggleClass('active')">
-                    <i class="hand paper icon"></i>
-                    <i class="hand paper icon"></i>
-                </button>
-                <button class="ui button user-filter" data-tooltip="Prep Time: 4hr - 6hr" data-position="top center" onClick="jQuery(this).toggleClass('active')">
-                    <i class="hand paper icon"></i>
+                <button class="ui button user-filter" id="prep-2" data-tooltip="Prep Time: 2hr - 4hr" data-position="top center" onClick="jQuery(this).toggleClass('active')">
                     <i class="hand paper icon"></i>
                     <i class="hand paper icon"></i>
                 </button>
-                <button class="ui button user-filter" data-tooltip="Prep Time: &gt;6hr" data-position="top center" onClick="jQuery(this).toggleClass('active')">
+                <button class="ui button user-filter" id="prep-3" data-tooltip="Prep Time: 4hr - 6hr" data-position="top center" onClick="jQuery(this).toggleClass('active')">
+                    <i class="hand paper icon"></i>
+                    <i class="hand paper icon"></i>
+                    <i class="hand paper icon"></i>
+                </button>
+                <button class="ui button user-filter" id="prep-4" data-tooltip="Prep Time: &gt;6hr" data-position="top center" onClick="jQuery(this).toggleClass('active')">
                     <i class="hand paper icon"></i>
                     <i class="hand paper icon"></i>
                     <i class="hand paper icon"></i>
@@ -106,19 +106,19 @@
             <div class="field">
                 <label>Duration</label>
                 <div class="ui buttons">    
-                <button class="ui button user-filter" data-tooltip="Duration: &lt;30min" data-position="top center" onClick="jQuery(this).toggleClass('active')">
+                <button class="ui button user-filter" id="dur-1" data-tooltip="Duration: &lt;30min" data-position="top center" onClick="jQuery(this).toggleClass('active')">
                     <i class="clock icon"></i>
                 </button>
-                <button class="ui button user-filter" data-tooltip="Duration: 30min - 1hr" data-position="top center" onClick="jQuery(this).toggleClass('active')">
-                    <i class="clock icon"></i>
-                    <i class="clock icon"></i>
-                </button>
-                <button class="ui button user-filter" data-tooltip="Duration: 1hr - 2hr" data-position="top center" onClick="jQuery(this).toggleClass('active')">
-                    <i class="clock icon"></i>
+                <button class="ui button user-filter" id="dur-2" data-tooltip="Duration: 30min - 1hr" data-position="top center" onClick="jQuery(this).toggleClass('active')">
                     <i class="clock icon"></i>
                     <i class="clock icon"></i>
                 </button>
-                <button class="ui button user-filter" data-tooltip="Duration: &gt;2hr" data-position="top center" onClick="jQuery(this).toggleClass('active')">
+                <button class="ui button user-filter" id="dur-3" data-tooltip="Duration: 1hr - 2hr" data-position="top center" onClick="jQuery(this).toggleClass('active')">
+                    <i class="clock icon"></i>
+                    <i class="clock icon"></i>
+                    <i class="clock icon"></i>
+                </button>
+                <button class="ui button user-filter" id="dur-4" data-tooltip="Duration: &gt;2hr" data-position="top center" onClick="jQuery(this).toggleClass('active')">
                     <i class="clock icon"></i>
                     <i class="clock icon"></i>
                     <i class="clock icon"></i>
@@ -143,7 +143,6 @@
                 </div>
             </div>
 
-            <!--<button class="ui button create-form-submit" type='submit'>Submit</button>-->
             <div class="ui submit button">Submit</div>
               <div class="ui error message"></div>
         </form>
@@ -159,11 +158,33 @@
 
 </html>
 <script>
+    cost_arr = ['cost-1','cost-2','cost-3','cost-4'];
+    prep_arr = ['prep-1', 'prep-2', 'prep-3', 'prep-4'];
+    dur_arr = ['dur-1', 'dur-2', 'dur-3', 'dur-4'];
+
     $(document).ready(function () {
         $('.ui.dropdown').dropdown();
 
         $(".user-filter").on("click",function(e){
+            var arr;
             e.preventDefault();
+            var val = $(this).attr('id');
+            if (val.includes('cost')){
+                arr = cost_arr;
+            }
+            else if (val.includes('prep')){
+                arr = prep_arr;
+            }
+            else{
+                arr = dur_arr;
+            }
+            arr.forEach(function(entry){
+                if (!(val === entry)){
+                    if ($('#'+entry).hasClass('active')){
+                        $('#'+entry).toggleClass('active');
+                    }
+                }
+            });
         })
 
         $('.ui.form')
