@@ -248,9 +248,9 @@ $(document).ready(function() {
 		var prepTimeIcons = prepTimeIcon.repeat(eventPrepTime);
 		var durationIcons = durationIcon.repeat(eventDuration);
 
-		var modalCostDiv = $("<div class='modal-property'>Cost: " + costIcons + "</div>");
-		var modalPrepTimeDiv = $("<div class='modal-property'>Prep Time: " + prepTimeIcons + "</div>");
-		var modalDurationDiv = $("<div class='modal-property'>Duration: " + durationIcons + "</div>");
+		var modalCostDiv = $("<div class='modal-property'><span class='property-label'>Cost: </span>" + costIcons + "</div>");
+		var modalPrepTimeDiv = $("<div class='modal-property'><span class='property-label'>Prep Time: </span>" + prepTimeIcons + "</div>");
+		var modalDurationDiv = $("<div class='modal-property'><span class='property-label'>Duration: </span> " + durationIcons + "</div>");
 
 		modalPropertiesDiv.append(modalCostDiv);
 		modalPropertiesDiv.append(modalPrepTimeDiv);
