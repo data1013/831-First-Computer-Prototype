@@ -41,8 +41,8 @@
     <!-- TODO: make it possible for people to "unselect" a filter  -->
     <!--TODO: for sort by, make it more obvious which caret is selected and make their hit boxes larger -->
     <div id="filterby-row">
-      <span class="filter-by">Filter By</span>
-      <div class="ui buttons">    
+      <span class="filter-by">Filter by</span>
+      <div class="ui buttons filterButtonsContainer">    
           <button class="ui button user-filter" data-value="cost-1" data-tooltip="Cost: &lt;$50" data-position="top center" onClick="jQuery(this).toggleClass('active')">
               <i class="dollar icon"></i>
           </button>
@@ -63,7 +63,7 @@
           </button>
       </div>
         
-      <div class="ui buttons">    
+      <div class="ui buttons filterButtonsContainer">    
           <button class="ui button user-filter" data-value="prepTime-1" data-tooltip="Prep Time: &lt;2hr" data-position="top center" onClick="jQuery(this).toggleClass('active')">
               <i class="hand paper icon"></i>
           </button>
@@ -84,7 +84,7 @@
           </button>
       </div>
         
-      <div class="ui buttons">    
+      <div class="ui buttons filterButtonsContainer">    
           <button class="ui button user-filter" data-value="duration-1" data-tooltip="Duration: &lt;30min" data-position="top center" onClick="jQuery(this).toggleClass('active')">
               <i class="clock icon"></i>
           </button>
