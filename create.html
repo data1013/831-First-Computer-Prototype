@@ -166,6 +166,7 @@
         $('.ui.dropdown').dropdown();
 
         $(".user-filter").on("click",function(e){
+            $(this).blur();
             var arr;
             e.preventDefault();
             var val = $(this).attr('id');
