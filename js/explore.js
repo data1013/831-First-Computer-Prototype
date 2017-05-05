@@ -184,12 +184,13 @@ $(document).ready(function () {
 			var $dropdownText = $dropdown.find("span.text").first();
 			$dropdownText.text($selected.find("span.text").text());
 			var $dropdownCaret = $dropdown.find(".dropdown.icon");
-			$dropdownCaret.remove();
+			// $dropdownCaret.remove();
+			console.log($dropdownText);
 			var $dropdownCaretContainer = $selected.find(".caret-container");
 			var $activeCaret = currentSortReverse ? $dropdownCaretContainer.find(".down") : $dropdownCaretContainer.find(".up");
 			$activeCaret.addClass("active");
-			$(".ui.dropdown>.caret.icon").remove();
-			$dropdown.append($activeCaret.clone());
+			// $(".ui.dropdown>.caret.icon").remove();
+			$dropdownText.append($activeCaret.clone());
 		}
 
 		rewriteEvents(currentSearchQuery, currentFilters, currentSortProperty, currentSortReverse);
