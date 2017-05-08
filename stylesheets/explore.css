@@ -12,7 +12,7 @@ body {
 }
 
 .container {
-    margin: 25px 60px;
+    margin: 25px 30px;
 }
 
 .ui.buttons.filterButtonsContainer {
@@ -91,6 +91,7 @@ body {
 
 .ui.dropdown .menu>.item>.icon, .ui.dropdown>.text>.icon {
     margin-right: 0;
+    margin-left: 5px;
 }
 
 .ui.button:not(.icon)>.icon:not(.button):not(.dropdown) {
