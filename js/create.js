@@ -6,7 +6,6 @@ $(document).on('change', '.btn-file :file', function() {
     var numFiles = input.get(0).files ? input.get(0).files.length : 1;
     var size = input.get(0).files[0].size;
 
-    // console.log(input, numFiles, label, size);
 
     $('#attachmentName').attr('name', 'attachmentName'); // allow upload.
     var postfix = label.substr(label.lastIndexOf('.'));
